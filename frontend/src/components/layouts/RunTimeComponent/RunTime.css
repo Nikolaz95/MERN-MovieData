@@ -1,0 +1,34 @@
+
+
+.MovieTvDetailsTimeDetails {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    width: fit-content;
+    color: white;
+    background-color: #b7adad9e;
+    backdrop-filter: blur(10px);
+}
+
+.MovieTvDetailsRunTime {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+
+@media (max-width: 320px) {
+.MovieTvDetailsTimeDetails {
+    padding: 10px;
+}
+.MovieTvDetailsRunTime {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+}

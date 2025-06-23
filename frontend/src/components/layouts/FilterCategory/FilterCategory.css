@@ -1,0 +1,68 @@
+/* category dropdown */
+
+.dropDownCategory {
+    display: flex
+;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    top: 190px;
+    right: 28px;
+    width: 200px;
+    background-color: transparent;
+    /* border: 1px solid black; */
+    border-radius: 20px;
+}
+
+.dropDownCategory option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    gap: 5px;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 20px;
+}
+
+
+@media only screen and (max-width: 490px) {
+
+.sectionFilterCategory {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.dropDownCategory {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+    top: 0px;
+    right: 0px;
+    width: 200px;
+    background-color: transparent;
+    /* border: 1px solid black; */
+    border-radius: 20px;
+}
+}
+    
+    
+@media only screen and (max-width: 370px) {
+.overMovieTvShowsContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+    
+.categoryTitleName {
+    font-size: 25px;
+    padding: 0px;
+    font-weight: bold;
+    text-align: center;
+}
+}

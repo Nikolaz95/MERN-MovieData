@@ -1,0 +1,48 @@
+
+
+/* tv num ep and season */
+
+.tvShowNumSeasonEpSection {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    gap: 10px;
+}
+
+
+.tvShowNumSeasonEpSection {
+    display: flex;
+    flex-direction: row;
+    backdrop-filter: blur(20px);
+
+}
+
+
+.tvShowEpisodesContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+
+.tvShowEpisodesTitle {
+    font-size: 20px;
+    color: white;
+    background-color: #b7adad9e;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.tvShowEpisodesContent {
+    font-size: 20px;
+    color: white;
+}
+
+.tvShowEpisodesNum {
+    background-color: #b7adad9e;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+/* tv num ep and season */

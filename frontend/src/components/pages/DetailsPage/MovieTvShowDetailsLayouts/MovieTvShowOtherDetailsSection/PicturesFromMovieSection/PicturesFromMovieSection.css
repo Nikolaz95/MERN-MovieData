@@ -1,0 +1,19 @@
+
+
+.movieTvPicturesTitle {
+    font-size: 25px;
+    padding: 20px;
+}
+
+
+.swiperSliderPicturesMovie{
+    
+}
+
+
+@media (max-width: 768px) {
+    .swiper-button-prev, .swiper-button-next {
+        display: none;
+    }
+
+}

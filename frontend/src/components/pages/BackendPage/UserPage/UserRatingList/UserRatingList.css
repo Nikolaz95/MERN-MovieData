@@ -1,0 +1,30 @@
+
+
+.usersRatingContent-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.usersRating-img {
+    border-radius: 20px;
+    width: 100%;
+    height: 250px;
+}
+
+.usersRatingContentList-cardBottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.usersRatingContent-ratingList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+

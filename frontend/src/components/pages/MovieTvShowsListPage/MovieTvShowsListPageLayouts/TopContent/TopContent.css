@@ -1,0 +1,45 @@
+
+.sectionOverMovieTvShows {
+    padding: 20px;
+}
+
+.overMovieTvShowsContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.categoryTitleName {
+    color: white;
+    font-size: 25px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+
+
+@media only screen and (max-width: 490px) {
+.overMovieTvShowsContent {
+    display: flex;
+    flex-direction: column;
+}
+
+}
+
+
+@media only screen and (max-width: 370px) {
+.overMovieTvShowsContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.categoryTitleName {
+    font-size: 25px;
+    padding: 0px;
+    font-weight: bold
+}
+
+}

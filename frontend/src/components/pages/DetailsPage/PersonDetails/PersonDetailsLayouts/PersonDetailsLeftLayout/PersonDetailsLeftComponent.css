@@ -1,0 +1,77 @@
+
+
+.actorAsideLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.actorsImg {
+    height: 500px;
+    width: 350px;
+    border-radius: 20px;
+}
+
+
+.actorDetailsInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.actorInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.actorInfoContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.actorInfoTitle {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.actorInfoText {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+
+@media (max-width: 768px) {
+    .actorDetailsInfo, .actorInfoContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    } 
+}
+
+
+@media  screen and (max-width: 425px) {
+.actorDetailsInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.actorInfo, .actorInfoContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+}
+
+
+@media  screen and (max-width: 320px) {
+    .actorsImg {
+        height: 400px;
+        width: 300px;
+        border-radius: 20px;
+    }
+}

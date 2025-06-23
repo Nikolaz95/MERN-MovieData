@@ -1,0 +1,90 @@
+
+
+.sectionSearchList {
+    padding: 20px;
+}
+
+.searchListContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    gap: 20px;
+}
+
+.noResultsText {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    color: white;
+}
+
+
+.searchResCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    gap: 10px;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.searchCardTop {
+    border-radius: 20px;
+    width: 100%;
+    height: 380px;
+}
+
+.searchCardPoster {
+    border-radius: 20px;
+    width: 100%;
+    height: 380px;
+}
+
+.searchCardBottom {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+
+.searchContentTitle {
+    color: white;
+    font-size: 20px;
+}
+
+
+.loadMoreBtnContent {
+    display: flex;
+    justify-content: center;
+}
+
+
+@media only screen and (max-width: 1024px) {
+.searchListContent {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+justify-items: center;
+gap: 10px;
+}
+
+}
+
+
+@media only screen and (max-width: 768px) {
+.searchListContent {
+display: grid;
+grid-template-columns: 1fr 1fr;
+justify-items: center;
+gap: 10px;
+}
+   }
+
+
+@media only screen and (max-width: 425px) {
+.searchListContent {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 10px;
+}
+    }

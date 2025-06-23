@@ -1,0 +1,11 @@
+
+
+.MovieTvDetailsOverWiev {
+    font-size: 20px;
+    color: white;
+    background-color: #b7adad9e;
+    backdrop-filter: blur(10px);
+    width: fit-content;
+    padding: 10px;
+    border-radius: 20px;
+}

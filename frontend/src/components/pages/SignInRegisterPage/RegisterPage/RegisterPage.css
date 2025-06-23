@@ -1,0 +1,51 @@
+
+
+
+.titleRegisterCreatAccount, .titleRegisterUserName, .titleRegisterEmail, .titleRegisterPassword, .titleRegisterDevider, .titleRegisterTextHaveAcc {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+.formContent-register {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-register {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inputContent {
+    padding: 10px;
+    border-radius: 20px;
+    width: 100%;
+    border: none;
+}
+
+
+.pasword-contentRegister {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+.bottonForm-Register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-loginSingIn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}

@@ -1,0 +1,43 @@
+
+
+.posterMovieTvSectionLeft {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 0;
+    gap: 10px;
+}
+
+.MovieDetailsPosterImg {
+    width: 300px;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.streamingContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+
+/* Responsive design for screens smaller than 768px */
+@media (max-width: 768px) {
+.posterMovieTvSectionLeft {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px;
+    gap: 10px;
+}
+
+}
+
+
+@media (max-width: 375px) {
+.MovieDetailsPosterImg {
+    width: 300px;
+    height: 100%;
+    border-radius: 20px;
+}  
+     
+}

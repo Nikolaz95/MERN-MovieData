@@ -1,0 +1,45 @@
+
+
+
+.actorAsideRight {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.biografy {
+    height: 700px;
+    overflow-y: auto;
+}
+
+.biografy::-webkit-scrollbar {
+    display: none;
+  }
+
+.biografyText {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.5rem;
+    line-height: 2;
+    color: #3a3737;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    gap: 20px;
+}
+
+.biografyText p {
+    margin-bottom: 10px;
+}
+
+@media  screen and (max-width: 425px) {
+.actorAsideRight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.biografy {
+    height: 400px;
+    overflow-y: auto;
+}
+}

@@ -1,0 +1,112 @@
+
+
+.posterMovieTvSectionRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 20px;
+    width: 500px;
+    backdrop-filter: blur(20px);
+    gap: 10px;
+    padding: 10px 5px;
+}
+
+.posterMovieTvRightTop {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.posterMovieTvRightTitle {
+    font-size: 20px;
+    color: white;
+    background-color: #b7adad9e;
+    backdrop-filter: blur(10px);
+    width: fit-content;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+
+.posterMovieTvRightMiddle {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.posterMovieTvFact {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.posterMovieTvTimeRatingSection {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: fit-content;
+}
+
+
+.posterMovieTvBtnSection {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+
+@media (max-width: 425px) {
+
+.posterMovieTvSectionRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 20px;
+    width: 400px;
+    backdrop-filter: blur(20px);
+    gap: 10px;
+    padding: 10px 5px;
+}
+
+
+}
+
+
+@media (max-width: 375px) {
+.posterMovieTvSectionRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 20px;
+    width: 350px;
+    backdrop-filter: blur(20px);
+    gap: 10px;
+    padding: 10px 5px;
+}
+}
+
+
+@media (max-width: 320px) {
+.posterMovieTvSectionRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 20px;
+    width: 300px;
+    backdrop-filter: blur(20px);
+    gap: 10px;
+    padding: 10px 5px;
+}
+
+.posterMovieTvTimeRatingSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+    
+}
+    

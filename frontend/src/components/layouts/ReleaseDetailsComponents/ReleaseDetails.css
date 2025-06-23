@@ -1,0 +1,95 @@
+
+/*  releaseDetails*/
+.MovieTvDetailsReleaseDetails  {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    width: fit-content;
+}
+.releasedStatusInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 20px;
+    padding-left: 10px;
+    width: fit-content;
+    gap: 10px;
+    color: white;
+    background-color: #b7adad9e;
+    backdrop-filter: blur(10px);
+}
+.statusCircle {
+    border: 1px solid none;
+    border-radius: 20px;
+    /* background-color: rgb(210, 242, 52); */
+    font-size: 15px;
+    font-weight: 1000;
+    padding: 10px;
+}
+
+.statusCircle.released {
+    background-color: rgb(5, 235, 5);
+    color: white;
+}
+
+.statusCircle.Ended {
+    background-color: green;
+    color: white;
+}
+
+.statusCircle.inProduction {
+    background-color: rgb(192, 206, 2);
+    color: white;
+}
+
+
+.releasedDateInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 20px;
+    padding: 10px;
+    width: fit-content;
+    gap: 10px;
+    color: white;
+    background-color: #b7adad9e;
+    backdrop-filter: blur(10px);
+}
+
+/*  releaseDetails*/
+
+
+@media only screen and (max-width: 768px) {
+    .MovieDetails-releaseDetails {
+        display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    }
+}
+
+@media (max-width: 375px) {
+.releasedDateInfo {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 10px;
+    gap: 10px;
+    align-items: center;
+    
+}
+
+}
+
+@media (max-width: 320px) {
+.MovieTvDetailsReleaseDetails {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+}

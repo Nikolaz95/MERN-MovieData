@@ -1,0 +1,44 @@
+
+
+
+
+
+table {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
+th, td {
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+/* btn user list */
+
+
+.btn-userListContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: none;
+    gap: 10px;
+}
+
+
+.btn-userList {
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    border: none;
+    gap: 10px;
+}
+
+.btnIcon-userList {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+

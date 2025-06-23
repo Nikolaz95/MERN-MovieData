@@ -1,0 +1,48 @@
+
+
+/* stil  genres*/
+
+.movieTvDetailsGenres{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: fit-content;
+    gap: 10px;
+}
+
+.movieTvDetailsGenresContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    gap: 5px;
+    border-radius: 20px;
+    width: fit-content;
+    background-color: #b7adad9e;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.genresText {
+    font-weight: bold;
+    color: white;
+}
+
+.genresImg {
+    width: 20px;
+    height: 20px;
+}
+
+/* stil  genres*/
+
+
+@media only screen and (max-width: 425px) {
+.movieTvDetailsGenres{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: fit-content;
+    gap: 10px;
+}
+
+
+}

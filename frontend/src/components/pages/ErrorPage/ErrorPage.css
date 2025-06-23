@@ -1,0 +1,74 @@
+
+
+.erorTopContent {
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+
+
+img {
+    font-size: 150px;
+}
+
+.textEror, .imgEror {
+    font-size: 50px;
+    color: red;
+    animation: vibrate-1 0.3s linear infinite both;
+}
+
+@keyframes vibrate-1 {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+
+@media  screen and (max-width: 1300px) {
+.erorContent {
+    position: relative;
+}
+}
+
+@media  screen and (max-width: 430px) {
+.erorContent {
+    position: relative;
+}
+
+.textEror {
+    font-size: 40px;
+}
+
+.imgEror {
+    width: 100px;
+    height: 100px;
+}
+
+}
+
+
+@media  screen and (max-width: 350px) {
+.erorContent {
+    position: relative;
+}
+
+.textEror {
+    font-size: 30px;
+}
+
+.imgEror {
+    width: 100px;
+    height: 100px;
+}
+}

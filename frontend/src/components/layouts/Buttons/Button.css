@@ -1,0 +1,162 @@
+.button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.9s ease;
+}
+
+
+.iconBtns {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.openBtn {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.VievAlla {
+border: 1px solid none;
+background: linear-gradient(to right, #c0fecf 0, #1ed5a9 100%);
+color: white;
+border-radius: 20px;
+padding: 10px;
+font-weight: bold;
+cursor: pointer;
+text-decoration: none; 
+}
+
+.trendingBtn.active {
+border: 1px solid none;
+background: linear-gradient(to right, #c0fecf 0, #1ed5a9 100%);
+color: white;
+border-radius: 20px;
+padding: 10px;
+font-weight: bold;
+cursor: pointer;
+text-decoration: none; 
+}
+
+.trendingBtn.notActive {
+border: 1px solid none;
+background: #e0e0e0;
+color: #555;
+border-radius: 20px;
+padding: 10px;
+font-weight: bold;
+cursor: pointer;
+text-decoration: none; 
+}
+
+
+/* search btns */
+
+
+
+
+/* search btns */
+.searchTypeBtn.active {
+border: 1px solid none;
+background: linear-gradient(to right, #c0fecf 0, #1ed5a9 100%);
+color: white;
+border-radius: 20px;
+padding: 10px;
+font-weight: bold;
+cursor: pointer;
+text-decoration: none; 
+}
+
+
+/* Add to Watch List */
+.button.addWatchList {
+    background-color: #ccc;
+    color: black;
+}
+  
+  /* Remove from Watch List */
+.button.removeWatchList {
+    background-color: #4caf50;
+    color: white;
+}
+
+
+
+
+/* Add to Watch List */
+.button.addFavList {
+    background-color: #ccc;
+    color: black;
+}
+  
+/* Remove from Watch List */
+.button.removeFavList {
+    background-color: #4caf50;
+    color: white;
+}
+
+/* cancel upload picture*/
+.button.uploadPicture {
+    background-color: #46b2f5;
+    color: white;
+}
+
+/* cancel upload picture*/
+.button.cancelUploadImg {
+    background-color: #ff0000;
+    color: white;
+}
+
+/* cancel upload picture*/
+.button.deleteAccount {
+    background-color: #ff0000;
+    color: white;
+}
+
+
+/* logIn account*/
+.button.loginBtn {
+    background-color: #46b2f5;
+    color: white;
+}
+
+/* create account*/
+.button.createAcc {
+    background-color: #4caf50;
+    color: white;
+}
+
+/* create review*/
+.removeReview {
+    display: flex;
+    flex-direction: row;
+    background-color: #c32d2d;
+    color: white;
+}
+
+/* create review*/
+.postComment {
+    display: flex;
+    flex-direction: row;
+    background-color: #46b2f5;
+    color: white;
+}
+
+.modalCloseX {
+    position: relative;
+    top: 50px;
+    left: 510px;
+    color: rgb(135, 0, 0);
+    background-color: transparent;
+    cursor: pointer;
+}
+

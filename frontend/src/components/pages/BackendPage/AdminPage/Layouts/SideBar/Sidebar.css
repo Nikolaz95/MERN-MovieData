@@ -1,0 +1,109 @@
+
+
+.dashBoardSideBarSection {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 300px;
+    gap: 30px;
+    border-radius: 0 16px 16px 0;
+    border: 1px solid black;
+    transition: width 0.3s ease; 
+}
+
+
+/* Closed sidebar */
+.closed {
+    width: 100px; /* Narrow width when closed */
+}
+
+/* Open sidebar */
+.open {
+    width: 150px; /* Expanded width when open */
+}
+
+.sideNavBarTop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.sideNavMainContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+  
+.sideNavLink {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    gap: 10px;
+    border: 1px solid black;
+}
+
+
+
+.sideNavLinklogOut {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* border: 1px solid black; */
+}
+
+
+.dashBoardDropdownSideBar.open {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px ;
+    list-style: none;
+    gap: 10px;
+}
+
+.dashBoardDropdownSideBar.closed ul li a {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .dashBoardDropdownSideBar.open ul li a {
+    justify-content: flex-start;
+} */
+
+.dashBoardDropdownSideBar.open ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.dashBoardDropdownSideBar.open li a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+
+  /* media query */
+
+@media screen and (min-width: 320px ) {
+    .dashBoardDropdownSideBar ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px;
+        list-style: none;
+        gap: 10px;
+    }
+}

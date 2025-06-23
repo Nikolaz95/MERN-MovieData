@@ -1,0 +1,52 @@
+
+
+/* article content */
+
+.adminDashBoardSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.adminContentDashBoard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+
+.dataFactContentTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid black;
+  gap: 20px;
+}
+
+
+.borderContentTop {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.borderContentInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.dataFactContentBottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  gap: 20px;
+}
+
+.borderText {
+  border: 1px solid black;
+  padding: 10px;
+  /* height: 200px; */
+}

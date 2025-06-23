@@ -1,0 +1,81 @@
+
+
+.streamingModalContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #949494;
+    border-radius: 30px;
+    height: 480px;
+    width: 560px;
+}
+
+.streamingModalLeft {
+    height: 100%;
+}
+
+.streamingModalPosterImg {
+    width: 310px;
+    height: 100%;
+    border-radius: 20px;
+}
+
+
+.streamingModalRight {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.streamingModalInfoTitleProvider {
+    font-size: 20px;
+
+}
+
+.streamingModalRightStreamings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.streamingLogo {
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+
+.streamingModalNoContentText, .freeModalInfoTitleProvider {
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+
+
+@media (max-width: 425px) {
+.streamingModalContent {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;;
+    gap: 10px;
+    padding: 0;
+    padding-bottom: 10px;
+}
+
+
+
+
+.streamingModalRightStreamings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+
+}
+}

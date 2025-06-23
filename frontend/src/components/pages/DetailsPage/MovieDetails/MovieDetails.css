@@ -1,0 +1,10 @@
+
+
+/* Responsive design for screens smaller than 768px */
+
+@media (max-width: 768px) {
+.movieTvOtherDetailsContent {
+    margin-top: -700px;
+}
+
+}

@@ -1,0 +1,28 @@
+
+
+.btn-scrTop {
+    position: fixed;
+    bottom: 20px; /* Adjust the distance from the bottom as needed */
+    right: 20px;   /* Adjust the distance from the left as needed */
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #007bff; /* Add background color if needed */
+    color: white; /* Add text color if needed */
+    cursor: pointer;
+    z-index: 1000; /* Ensure the button is above other elements */    
+}
+
+
+.content-scrTop p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+
+.icon-scrTop {
+    font-size: 20px;
+}

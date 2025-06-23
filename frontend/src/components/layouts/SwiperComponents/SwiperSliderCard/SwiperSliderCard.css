@@ -1,0 +1,45 @@
+
+
+
+
+/* swiper style */
+
+.swiper-pagination-bullet-active {
+    background: red;
+  }
+  
+  /* mjenjanje velicine i boje iza content swipera */
+  .swiperSliderContent {
+    background-color: rgba(24, 33, 4, 0.434);
+    height: 440px;
+  }
+  
+  /* strelice  */
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px; /* Adjust as needed */
+    height: 30px; /* Adjust as needed */
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* strelica lijevo  koliko da se u lijevo pomjeri */
+  .swiper-button-prev {
+    left: 10px;
+  }
+  
+  /* strelica desna  koliko da se u desno pomjeri */
+  .swiper-button-next {
+    right: 10px;
+  }
+  /* boje strelica */
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: rgb(255, 255, 255);
+  }
+  /* boje strelica */
+  
+  /* strelice  */

@@ -1,0 +1,111 @@
+
+/* movie lsit content */
+
+.movieTvList {
+    padding: 20px;
+}
+
+.movieTvListContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    gap: 10px;
+}
+
+.movieTvListCard {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    /* border: 1px solid black; */
+}
+
+.movieTvListCardTop {
+    border-radius: 20px;
+    width: 100%;
+    height: 380px;
+}
+
+
+.amovieTvListCardPoster {
+    border-radius: 20px;
+    width: 100%;
+    height: 380px;
+}
+
+
+.movieTvListCardName {
+    color: white;
+}
+
+.movieTvListCardRating {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.movieTvListCardCardBottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.movieTvListCardName {
+    font-size: 20px;
+}
+
+.movieTvListCardRating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.movieTvListCardBtns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* movie lsit content */
+
+
+
+@media only screen and (max-width: 1024px) {
+.movieTvListContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    gap: 10px;
+}
+}
+
+
+@media only screen and (max-width: 768px) {
+.movieTvListContent {
+display: grid;
+grid-template-columns: 1fr 1fr ;
+justify-items: center;
+gap: 10px;
+}
+}
+
+
+@media only screen and (max-width: 425px) {
+.movieTvListContent {
+display: grid;
+grid-template-columns: 1fr ;
+justify-items: center;
+gap: 10px;
+}
+
+.categoryTitle {
+display: flex;
+flex-direction: column;
+padding: 0;
+justify-items: center;
+gap: 20px;
+} 
+}

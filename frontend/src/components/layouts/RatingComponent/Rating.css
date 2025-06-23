@@ -1,0 +1,41 @@
+
+
+.Rating{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 20px;
+    padding-left: 10px;
+    width: fit-content;
+    gap: 10px;
+    color: white;
+    background-color: #b7adad9e;
+    backdrop-filter: blur(10px);
+  }
+
+.ratingCircle {
+    border: 1px solid none;
+    border-radius: 20px;
+    background-color: rgb(210, 242, 52);
+    font-size: 15px;
+    font-weight: 1000;
+    padding: 10px;
+}
+
+
+.rating-green {
+    background-color: green;
+}
+
+.rating-yellow {
+    background-color: yellow;
+    color: black; /* For better readability on yellow background */
+}
+
+.rating-orange {
+    background-color: orange;
+}
+
+.rating-red {
+    background-color: red;
+}

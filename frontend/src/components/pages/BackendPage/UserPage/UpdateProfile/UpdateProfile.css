@@ -1,0 +1,16 @@
+
+
+.formMain {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 20px;
+border: 1px solid black;
+}
+
+.formContentUpdateProfile {
+display: flex;
+flex-direction: column;
+gap: 20px;
+padding: 20px;
+}

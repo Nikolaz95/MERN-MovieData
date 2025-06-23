@@ -1,0 +1,37 @@
+
+
+/* season section */
+
+.tvShowSeason {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.seasonLabel {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    background-color: #b7adad9e;
+    padding: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.seasonsOption {
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+
+.optionSeason {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+/* season section */

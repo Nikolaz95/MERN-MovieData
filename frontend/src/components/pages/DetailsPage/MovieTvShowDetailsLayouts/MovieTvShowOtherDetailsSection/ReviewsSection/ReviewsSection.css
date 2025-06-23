@@ -1,0 +1,81 @@
+
+.usersReviewsContent {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+.userReviewPost {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+}
+
+.usersReviewsContentTop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.usersReviewsContentBottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.reviewTextArea {
+    padding: 10px;
+    height: 100px;
+    width: 100%;
+    resize: none;
+    border-radius: 20px;
+    /* border: none; */
+}
+
+
+/* all reviews */
+
+.allUsersReviewsContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+}
+
+.allUsersReviewsSection {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    gap: 20px;
+}
+
+.allUsersReviewsContentTop{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.allUsersReviewsContentBottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.allUsersReviewsTextArea {
+    padding: 10px;
+    height: 100px;
+    width: 100%;
+    resize: none;
+    border-radius: 20px;
+     border: none;
+     font-size: 15px;
+     font-weight: bold;
+     color: rgb(0, 0, 0);
+     background-color: rgb(224, 224, 224);
+}

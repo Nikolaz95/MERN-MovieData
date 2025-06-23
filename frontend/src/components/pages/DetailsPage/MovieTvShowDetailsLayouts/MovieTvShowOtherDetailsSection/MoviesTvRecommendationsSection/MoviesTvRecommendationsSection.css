@@ -1,0 +1,28 @@
+
+
+.movieTvRecommendationsTitle {
+    font-size: 25px;
+    padding: 20px;
+}
+
+.swiperSliderRecommendationsMovie {
+    background-color: rgba(24, 33, 4, 0.434);
+    height: 440px;
+}
+
+
+@media (max-width: 768px) {
+
+    .swiperSliderRecommendationsMovie {
+        /* background-color: rgba(24, 33, 4, 0.434); */
+        height: 540px;
+    }
+    .swiper-button-prev, .swiper-button-next {
+        display: none;
+    }
+
+    .swiper-pagination {
+        display: none;
+    }
+
+}

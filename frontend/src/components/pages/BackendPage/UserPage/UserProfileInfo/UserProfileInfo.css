@@ -1,0 +1,28 @@
+
+
+
+.userProfileConteiner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid black;
+}
+
+.userProfileConteinerTop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid black;
+}
+
+.userProfileConteinerBottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 10px;
+    border: 1px solid black;
+}

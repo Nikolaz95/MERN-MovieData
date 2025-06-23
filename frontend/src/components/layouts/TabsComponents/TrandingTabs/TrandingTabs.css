@@ -1,0 +1,23 @@
+
+.trendingTabsContent {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+
+.trendingTabsBtns {
+    display: flex;
+    gap: 20px;
+}
+
+@media only screen and (max-width: 320px) {
+    .trendingTabsContent {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+}
