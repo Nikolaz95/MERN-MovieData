@@ -13,7 +13,7 @@ import 'swiper/css/pagination';
 import "./SwiperAutoPlay.css";
 
 const SwiperAutoPlay = ({ items, renderSlide, className, autoplayDelay = 2500 }) => {
-    /* const progressCircle = useRef(null);
+    const progressCircle = useRef(null);
     const progressContent = useRef(null);
     const handleAutoplayTimeLeft = (s, time, progress) => {
         if (progressCircle.current) {
@@ -22,12 +22,12 @@ const SwiperAutoPlay = ({ items, renderSlide, className, autoplayDelay = 2500 })
         if (progressContent.current) {
             progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
         }
-    }; */
+    };
     return (
         <Swiper spaceBetween={30} effect={'fade'} navigation={false}
-            /* autoplay={{ delay: autoplayDelay, disableOnInteraction: false, }} */
+            autoplay={{ delay: autoplayDelay, disableOnInteraction: false, }}
             loop={true}
-            /* onAutoplayTimeLeft={handleAutoplayTimeLeft} */
+            onAutoplayTimeLeft={handleAutoplayTimeLeft}
             modules={[EffectFade, Navigation, Pagination, Autoplay]}
             className={className}>
             {items?.map((item) => (
@@ -36,12 +36,12 @@ const SwiperAutoPlay = ({ items, renderSlide, className, autoplayDelay = 2500 })
                 </SwiperSlide>
             ))}
             {/* swiper auto play progress*/}
-            {/* <div className="autoplayProgress" slot="container-end">
+            <div className="autoplayProgress" slot="container-end">
                 <svg viewBox="0 0 48 48" ref={progressCircle}>
                     <circle cx="24" cy="24" r="20"></circle>
                 </svg>
                 <span ref={progressContent}></span>
-            </div> */}
+            </div>
         </Swiper>
 
     )
