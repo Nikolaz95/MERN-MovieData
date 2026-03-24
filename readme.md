@@ -1,5 +1,19 @@
 # Movie News Web App (MERN Stack)
 
+![App Screenshot a](/frontend/src/assets/screenshots/TMDB-GIF/gif/TMDB-1.gif)
+
+![App Screenshot a](/frontend/src/assets/screenshots/TMDB-GIF/gif/TMDB-2.gif)
+
+![App Screenshot a](/frontend/src/assets/screenshots/TMDB-GIF/gif/TMDB-3.gif)
+
+![App Screenshot a](/frontend/src/assets/screenshots/TMDB-GIF/gif/TMDB-4.gif)
+
+![App Screenshot a](/frontend/src/assets/screenshots/TMDB-GIF/gif/TMDB-5.gif)
+
+## 🚀 Live Demo
+
+👉 [View App](https://mern-movie-cpbh.onrender.com/)
+
 A full-stack web application for movie enthusiasts, integrating the TMDB API to browse, review, and organize films/TV shows.
 
 ## 🔨 Technologies Used
@@ -7,7 +21,7 @@ A full-stack web application for movie enthusiasts, integrating the TMDB API to 
 ### **Frontend**
 
 - **React.js** (with Hooks, React Router)
-- **State Management**: Context API or Redux Toolkit
+- **State Management**: Context API , Redux Toolkit
 - **Styling**: CSS Modules
 - **UI Libraries**: Material-UI
 
@@ -30,6 +44,10 @@ A full-stack web application for movie enthusiasts, integrating the TMDB API to 
 - **Environment Variables**: Dotenv
 
 ## ✨ Key Features
+
+- 📱 **Fully Responsive Design**
+  - Optimized for mobile, tablet, and desktop
+  - Works across all modern browsers
 
 - ✅ **User Authentication**
   - Signup, login, logout
