@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const TMDB_API_KEY = 'd0e15d3cd703e39934833d9dc348e907';
+const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 
 const useApiFetch = (endpoint, params = {}) => {

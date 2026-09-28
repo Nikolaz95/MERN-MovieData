@@ -1,11 +1,11 @@
 mongoDB.txt
-frontend/src/components/hooks/getApiUrl.js
 .env.production
 bezveze.txt
 # secrets
 backend/config/config.env
 .env
 .env.*
+!.env.example
 
 # dependencies
 node_modules/
