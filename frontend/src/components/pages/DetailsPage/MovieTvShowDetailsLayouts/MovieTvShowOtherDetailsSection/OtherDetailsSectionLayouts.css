@@ -5,4 +5,49 @@
     flex-direction: column;
     /* padding: 10px; */
     gap: 10px;
+    padding-bottom: 40px;
+    background-color: #f8fbff;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* same look for all section titles (Reviews, Actors, Pictures, Recommendations) */
+.movieTvReviewsTitle,
+.movieTvActorsTitle,
+.movieTvPicturesTitle,
+.movieTvRecommendationsTitle,
+.actorMoviesTitle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 32px 20px 16px;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    font-weight: 800;
+    color: #1f2937;
+}
+
+.movieTvReviewsTitle::before,
+.movieTvActorsTitle::before,
+.movieTvPicturesTitle::before,
+.movieTvRecommendationsTitle::before,
+.actorMoviesTitle::before {
+    content: "";
+    width: 6px;
+    height: 1.1em;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #29aff8 0%, #1ed5a9 100%);
+}
+
+/* sections fade up while scrolling into view (browsers that support scroll-driven animations) */
+@supports (animation-timeline: view()) {
+    .otherMovieTvDetailsSection > section {
+        animation: detailsFadeUp linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 35%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .otherMovieTvDetailsSection > section {
+        animation: none;
+    }
 }

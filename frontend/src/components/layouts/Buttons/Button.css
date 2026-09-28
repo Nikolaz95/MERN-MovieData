@@ -77,31 +77,109 @@ text-decoration: none;
 }
 
 
-/* Add to Watch List */
-.button.addWatchList {
-    background-color: #ccc;
-    color: black;
-}
-  
-  /* Remove from Watch List */
-.button.removeWatchList {
-    background-color: #4caf50;
-    color: white;
-}
-
-
-
-
-/* Add to Watch List */
-.button.addFavList {
-    background-color: #ccc;
-    color: black;
-}
-  
-/* Remove from Watch List */
+/* ---------- Watch List / Favorit List ---------- */
+.button.addWatchList,
+.button.removeWatchList,
+.button.addFavList,
 .button.removeFavList {
-    background-color: #4caf50;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 18px 0 12px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+    transition: transform 200ms ease, box-shadow 200ms ease, background-color 250ms ease, color 250ms ease;
+}
+
+.button.addWatchList .iconBtns,
+.button.removeWatchList .iconBtns,
+.button.addFavList .iconBtns,
+.button.removeFavList .iconBtns {
+    width: 24px;
+    height: 24px;
+}
+
+.button.addWatchList:hover,
+.button.removeWatchList:hover,
+.button.addFavList:hover,
+.button.removeFavList:hover {
+    transform: translateY(-2px);
+}
+
+.button.addWatchList:active,
+.button.removeWatchList:active,
+.button.addFavList:active,
+.button.removeFavList:active {
+    transform: scale(0.96);
+}
+
+/* Add to Watch List - white with blue border */
+.button.addWatchList {
+    color: #0b84c6;
+    background-color: white;
+    box-shadow: inset 0 0 0 2px #29aff8, 0 4px 12px rgba(41, 175, 248, 0.15);
+}
+
+.button.addWatchList:hover {
+    background-color: #e0f2fe;
+    box-shadow: inset 0 0 0 2px #29aff8, 0 8px 18px rgba(41, 175, 248, 0.3);
+}
+
+/* on Watch List - filled blue/teal */
+.button.removeWatchList {
     color: white;
+    background: linear-gradient(120deg, #29aff8 0%, #1ed5a9 100%);
+    box-shadow: 0 6px 16px rgba(30, 213, 169, 0.35);
+}
+
+/* Add to Favorit List - white with pink border */
+.button.addFavList {
+    color: #e11d48;
+    background-color: white;
+    box-shadow: inset 0 0 0 2px #fb7185, 0 4px 12px rgba(244, 63, 94, 0.12);
+}
+
+.button.addFavList:hover {
+    background-color: #fff1f2;
+    box-shadow: inset 0 0 0 2px #fb7185, 0 8px 18px rgba(244, 63, 94, 0.25);
+}
+
+/* on Favorit List - filled pink */
+.button.removeFavList {
+    color: white;
+    background: linear-gradient(120deg, #fb7185 0%, #e11d48 100%);
+    box-shadow: 0 6px 16px rgba(225, 29, 72, 0.35);
+}
+
+/* icon "pops" when the movie is added (class changes -> animation runs) */
+.button.removeWatchList .iconBtns,
+.button.removeFavList .iconBtns {
+    animation: listIconPop 450ms cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.button.addFavList:hover .iconBtns {
+    animation: heartBeat 800ms ease-in-out infinite;
+}
+
+@keyframes listIconPop {
+    0% { transform: scale(0.3) rotate(-30deg); }
+    60% { transform: scale(1.3) rotate(8deg); }
+    100% { transform: scale(1) rotate(0); }
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    30% { transform: scale(1.2); }
+    60% { transform: scale(0.95); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .button.removeWatchList .iconBtns,
+    .button.removeFavList .iconBtns,
+    .button.addFavList:hover .iconBtns {
+        animation: none;
+    }
 }
 
 /* cancel upload picture*/

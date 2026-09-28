@@ -1,12 +1,10 @@
 
 
+/* title style: OtherDetailsSectionLayouts.css */
 
-.movieTvActorsTitle {
-    font-size: 25px;
-    padding: 20px;
-}
-
+/* light band behind the actor cards */
 .swiperSliderActorsMovie {
-    height: 510px;
-    background-color: yellowgreen;
+    height: auto;
+    padding: 20px 8px 0;
+    background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 100%);
 }

@@ -35,18 +35,15 @@ const TvShowDetails = () => {
             <TitleName title={data?.original_name} />
             <section className="movieTvDetailsPageContent">
                 {isVisible && <ScrollToTop />}
-                {/* top background pic  */}
+                {/* hero: background picture + poster + info */}
                 <MovieTvShowTopDetailsLayout>
                     <TopBackGroundPoster data={data} />
+                    <MovieTvShowPosterLayout>
+                        <PosterLeftSection data={data} type="tv" />
+                        <PosterRightSection data={data} type="tv" />
+                    </MovieTvShowPosterLayout>
                 </MovieTvShowTopDetailsLayout>
-                {/* top background pic  */}
-
-                {/*Poster Details  */}
-                <MovieTvShowPosterLayout>
-                    <PosterLeftSection data={data} type="tv" />
-                    <PosterRightSection data={data} type="tv" />
-                </MovieTvShowPosterLayout>
-                {/*Poster Details  */}
+                {/* hero */}
 
                 <section className='movieTvOtherDetailsContent'>
                     <OtherDetailsSectionLayouts>

@@ -1,112 +1,284 @@
 
 
+/* white glass info card - all chip styles below are scoped to this card,
+   so the same components on the home page (Trending) keep their look */
 .posterMovieTvSectionRight {
+    --chipBg: #f1f5f9;
+    --chipBorder: #e2e8f0;
+    --cardText: #1f2937;
+    --cardMuted: #64748b;
+
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    border-radius: 20px;
-    width: 500px;
-    backdrop-filter: blur(20px);
-    gap: 10px;
-    padding: 10px 5px;
+    gap: 18px;
+    width: 100%;
+    padding: 28px 32px;
+    color: var(--cardText);
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
 }
+
+/* card parts slide in one after another */
+.posterMovieTvSectionRight > * {
+    animation: detailsFadeUp 550ms ease-out both;
+}
+
+.posterMovieTvSectionRight > *:nth-child(1) { animation-delay: 100ms; }
+.posterMovieTvSectionRight > *:nth-child(2) { animation-delay: 180ms; }
+.posterMovieTvSectionRight > *:nth-child(3) { animation-delay: 260ms; }
+.posterMovieTvSectionRight > *:nth-child(4) { animation-delay: 340ms; }
+.posterMovieTvSectionRight > *:nth-child(5) { animation-delay: 420ms; }
+.posterMovieTvSectionRight > *:nth-child(6) { animation-delay: 500ms; }
+.posterMovieTvSectionRight > *:nth-child(n+7) { animation-delay: 580ms; }
 
 .posterMovieTvRightTop {
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
 }
 
 .posterMovieTvRightTitle {
-    font-size: 20px;
-    color: white;
-    background-color: #b7adad9e;
-    backdrop-filter: blur(10px);
-    width: fit-content;
-    padding: 10px;
-    border-radius: 20px;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--cardText);
 }
 
 
 .posterMovieTvRightMiddle {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: column-reverse; /* tagline above the overview */
+    gap: 10px;
+}
+
+.posterMovieTvSectionRight .MovieTvDetailsTagline {
+    width: auto;
+    padding: 0;
+    font-size: 17px;
+    font-style: italic;
+    color: #0b84c6;
+    background: none;
+    backdrop-filter: none;
+}
+
+.posterMovieTvSectionRight .MovieTvDetailsOverWiev {
+    width: auto;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #334155;
+    background: none;
+    backdrop-filter: none;
 }
 
 
-.posterMovieTvFact {
+.posterMovieTvFact,
+.posterMovieTvTimeRatingSection,
+.posterMovieTvNumEpSeasonsSection,
+.posterMovieTvSeasonsSection {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
 }
 
-.posterMovieTvTimeRatingSection {
+
+/* ---------- chips ---------- */
+
+/* genres */
+.posterMovieTvSectionRight .movieTvDetailsGenres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.posterMovieTvSectionRight .movieTvDetailsGenresContent {
+    padding: 6px 12px;
+    gap: 6px;
+    background-color: #e0f2fe;
+    border: 1px solid #bae6fd;
+    backdrop-filter: none;
+    border-radius: 999px;
+    transition: transform 200ms ease;
+}
+
+.posterMovieTvSectionRight .movieTvDetailsGenresContent:hover {
+    transform: translateY(-2px);
+}
+
+.posterMovieTvSectionRight .genresText {
+    font-size: 14px;
+    color: #0b84c6;
+}
+
+/* status + date, runtime, rating, episodes, seasons */
+.posterMovieTvSectionRight .MovieTvDetailsReleaseDetails {
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.posterMovieTvSectionRight .releasedStatusInfo,
+.posterMovieTvSectionRight .releasedDateInfo,
+.posterMovieTvSectionRight .MovieTvDetailsTimeDetails,
+.posterMovieTvSectionRight .Rating,
+.posterMovieTvSectionRight .tvShowEpisodesContent,
+.posterMovieTvSectionRight .tvShowSeason {
     display: flex;
     flex-direction: row;
-    gap: 20px;
-    width: fit-content;
+    align-items: center;
+    gap: 8px;
+    min-height: 38px;
+    padding: 4px 6px 4px 14px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--cardText);
+    background-color: var(--chipBg);
+    border: 1px solid var(--chipBorder);
+    border-radius: 999px;
+    backdrop-filter: none;
+}
+
+.posterMovieTvSectionRight .releasedDateInfo,
+.posterMovieTvSectionRight .MovieTvDetailsTimeDetails {
+    padding-right: 14px;
+}
+
+.posterMovieTvSectionRight .MovieTvDetailsRunTime {
+    gap: 6px;
+}
+
+.posterMovieTvSectionRight .releasedInfoCircle {
+    color: #0b84c6;
+}
+
+.posterMovieTvSectionRight .statusCircle,
+.posterMovieTvSectionRight .ratingCircle {
+    padding: 5px 10px;
+    font-size: 13px;
+    border-radius: 999px;
+}
+
+.posterMovieTvSectionRight .ratingCircle {
+    min-width: 34px;
+    text-align: center;
+}
+
+/* white number on green / orange / red, black stays on yellow */
+.posterMovieTvSectionRight .ratingCircle:not(.rating-yellow) {
+    color: white;
+}
+
+/* tv: episodes / seasons */
+.posterMovieTvSectionRight .tvShowNumSeasonEpSection {
+    flex-wrap: wrap;
+    gap: 10px;
+    backdrop-filter: none;
+}
+
+.posterMovieTvSectionRight .tvShowEpisodesTitle {
+    padding: 0;
+    font-size: 14px;
+    color: var(--cardMuted);
+    background: none;
+}
+
+.posterMovieTvSectionRight .tvShowEpisodesNum {
+    padding: 4px 10px;
+    font-size: 14px;
+    color: white;
+    background-color: #29aff8;
+    border-radius: 999px;
+}
+
+.posterMovieTvSectionRight .seasonLabel {
+    padding: 0;
+    font-size: 14px;
+    color: var(--cardMuted);
+    background: none;
+}
+
+.posterMovieTvSectionRight .seasonsOption {
+    padding: 6px 10px;
+    font-size: 14px;
+    color: var(--cardText);
+    background-color: white;
+    border: 1px solid var(--chipBorder);
+    border-radius: 999px;
+}
+
+/* user rating (stars) */
+.posterMovieTvSectionRight .usersRating-content {
+    gap: 8px;
+}
+
+.posterMovieTvSectionRight .usersRating-title {
+    padding: 0;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--cardMuted);
+    background: none;
+    backdrop-filter: none;
+}
+
+.posterMovieTvSectionRight .usersVoting-content {
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.posterMovieTvSectionRight .usersRating,
+.posterMovieTvSectionRight .UserRate {
+    padding: 6px 14px;
+    color: var(--cardText);
+    background-color: var(--chipBg);
+    border: 1px solid var(--chipBorder);
+    border-radius: 999px;
+    backdrop-filter: none;
+}
+
+.posterMovieTvSectionRight .UserRate {
+    gap: 10px;
+    font-weight: 700;
 }
 
 
+/* watchlist / favorit buttons */
 .posterMovieTvBtnSection {
     display: flex;
-    flex-direction: row;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 4px;
 }
 
+
+@media (max-width: 768px) {
+.posterMovieTvSectionRight {
+    max-width: 640px;
+    padding: 22px 18px;
+    gap: 16px;
+}
+
+.posterMovieTvRightTop {
+    justify-content: center;
+    text-align: center;
+}
+}
 
 @media (max-width: 425px) {
-
-.posterMovieTvSectionRight {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    border-radius: 20px;
-    width: 400px;
-    backdrop-filter: blur(20px);
-    gap: 10px;
-    padding: 10px 5px;
-}
-
-
-}
-
-
-@media (max-width: 375px) {
-.posterMovieTvSectionRight {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    border-radius: 20px;
-    width: 350px;
-    backdrop-filter: blur(20px);
-    gap: 10px;
-    padding: 10px 5px;
+.posterMovieTvBtnSection > .button {
+    flex: 1 1 100%;
+    justify-content: center;
 }
 }
 
-
-@media (max-width: 320px) {
-.posterMovieTvSectionRight {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    border-radius: 20px;
-    width: 300px;
-    backdrop-filter: blur(20px);
-    gap: 10px;
-    padding: 10px 5px;
+@media (prefers-reduced-motion: reduce) {
+    .posterMovieTvSectionRight > * {
+        animation: none;
+    }
 }
-
-.posterMovieTvTimeRatingSection {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-}
-    
-}
-    

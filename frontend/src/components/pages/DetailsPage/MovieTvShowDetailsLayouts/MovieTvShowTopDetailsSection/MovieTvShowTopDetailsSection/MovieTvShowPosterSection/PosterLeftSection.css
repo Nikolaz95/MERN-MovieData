@@ -3,41 +3,87 @@
 .posterMovieTvSectionLeft {
     display: flex;
     flex-direction: column;
-    padding: 50px 0;
-    gap: 10px;
+    align-items: center;
+    gap: 16px;
+    animation: detailsFadeUp 600ms ease-out both;
 }
 
 .MovieDetailsPosterImg {
+    display: block;
     width: 300px;
-    height: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
     border-radius: 20px;
+    border: 4px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.45);
+    transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.MovieDetailsPosterImg:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 28px 55px rgba(15, 23, 42, 0.5);
 }
 
 .streamingContent {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    width: 100%;
+}
+
+/* "Now Streaming on" button */
+.button.streaming {
+    justify-content: center;
+    width: 100%;
+    height: 48px;
+    padding: 0 20px;
+    border-radius: 999px;
+    color: white;
+    font-size: 16px;
+    background: linear-gradient(120deg, #29aff8 0%, #1ed5a9 100%);
+    box-shadow: 0 8px 20px rgba(41, 175, 248, 0.4);
+    transition: transform 200ms ease, box-shadow 200ms ease, filter 200ms ease;
+}
+
+.button.streaming:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(41, 175, 248, 0.5);
+    filter: brightness(1.05);
+}
+
+.button.streaming:active {
+    transform: scale(0.97);
+}
+
+.button.streaming .iconBtns {
+    width: 24px;
+    height: 24px;
+    animation: streamingPulse 2s ease-in-out infinite;
+}
+
+@keyframes streamingPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
 }
 
 
 
 /* Responsive design for screens smaller than 768px */
 @media (max-width: 768px) {
-.posterMovieTvSectionLeft {
-    display: flex;
-    flex-direction: column;
-    padding: 0px 0px;
-    gap: 10px;
-}
-
-}
-
-
-@media (max-width: 375px) {
 .MovieDetailsPosterImg {
-    width: 300px;
-    height: 100%;
-    border-radius: 20px;
-}  
-     
+    width: min(240px, 60vw);
+}
+
+.streamingContent {
+    width: min(240px, 60vw);
+}
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .posterMovieTvSectionLeft,
+    .button.streaming .iconBtns {
+        animation: none;
+    }
 }

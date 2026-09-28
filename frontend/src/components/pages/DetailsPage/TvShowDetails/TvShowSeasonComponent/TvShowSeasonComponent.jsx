@@ -14,10 +14,10 @@ const TvShowSeasonComponent = ({ data }) => {
     return (
         <div className='tvShowSeasonSection'>
             <article className='tvShowSeason'>
-                <label for="seasons" className='seasonLabel'>Seasons : </label>
+                <label htmlFor="seasons" className='seasonLabel'>Seasons : </label>
                 <select id="seasons" className='seasonsOption'>
                     <option value="">Seasons</option>
-                    {data?.seasons.map((season) => (
+                    {data?.seasons?.map((season) => (
                         <option value={season.season_number} key={season.id}>
                             Season {season.season_number}
                         </option>

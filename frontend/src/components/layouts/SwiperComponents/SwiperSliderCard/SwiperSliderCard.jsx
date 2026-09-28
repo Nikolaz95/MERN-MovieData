@@ -17,7 +17,8 @@ const SwiperSliderCard = ({ items, sliderSettings, renderContent, pagination = t
         <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={10} slidesPerView={5}
             navigation
-            pagination={pagination ? { clickable: true } : false}
+            /* dynamicBullets: only a few dots around the active one (actors can have 60+ slides) */
+            pagination={pagination ? { clickable: true, dynamicBullets: true } : false}
             loop
             breakpoints={sliderSettings}
             className={className} /* importujem clasname da bi mogo pojedinacno odredjivat kakav ocu swiper content */

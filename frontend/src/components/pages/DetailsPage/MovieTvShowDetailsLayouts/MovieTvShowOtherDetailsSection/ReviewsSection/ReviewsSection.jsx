@@ -1,48 +1,20 @@
 import React, { useState } from 'react'
-import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import "./ReviewsSection.css";
 import toast from 'react-hot-toast';
-
-const ReviewsSections = styled.section`
-      display: flex;
-    padding: 10px;
-    gap: 20px;
-    flex-direction: column;
-
-`;
-
-const ReviewsTitle = styled.h1`
-      font-size: 25px;
-
-`;
-
-const ReviewsContent = styled.main`
-     display: flex;
-    flex-direction: column;
-    gap: 20px;
-`;
-
-const UserReviewsTableContent = styled.div`
-     display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 20px;
-    border: 1px solid black;
-`;
 
 
 //import img
 import AvatarDefaultImg from "../../../../../../assets/pictures/avatar-profile.jpg"
-import PostDeletBtn from '../../../../../layouts/Buttons/PostDeleteComentBtn/PostDeletBtn';
 import LoadMoreReviewsBtn from '../../../../../layouts/Buttons/LoadMoreReviewsBtn/LoadMoreReviewsBtn';
 import HideReviewsBtn from '../../../../../layouts/Buttons/HideReviewsBtn/HideReviewsBtn';
 import PostBtn from '../../../../../layouts/Buttons/PostBnt/PostBtn';
 import DeletePostBtn from '../../../../../layouts/Buttons/DeletePostBtn/DeletePostBtn';
 import { useSelector } from 'react-redux';
 import { useAddReviewMutation, useDeleteReviewMutation, useGetReviewsQuery } from '../../../../../../redux/api/reviewsApi';
-import Image from '../../../../../layouts/ImagesContent/Image';
 
 
+const MAX_REVIEW_LENGTH = 1000;
 
 
 const ReviewsSection = ({ data, type }) => {
@@ -52,9 +24,9 @@ const ReviewsSection = ({ data, type }) => {
 
     const [addReview] = useAddReviewMutation();
     const [deleteReview] = useDeleteReviewMutation();
-    const { data: reviewsData, isLoading } = useGetReviewsQuery(data?.id);
+    const { data: reviewsData } = useGetReviewsQuery(data?.id);
 
-    console.log("Reviews Data:", reviewsData);
+    const reviewsCount = reviewsData?.length ?? 0;
 
     const handlePostReview = async () => {
         if (!user) {
@@ -62,7 +34,7 @@ const ReviewsSection = ({ data, type }) => {
             return;
         }
         if (!reviewText.trim()) {
-            alert("Review cannot be empty!");
+            toast.error("Review cannot be empty!");
             return;
         }
 
@@ -86,6 +58,14 @@ const ReviewsSection = ({ data, type }) => {
         }
     };
 
+    // Ctrl + Enter (Cmd + Enter on Mac) posts the review
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+            e.preventDefault();
+            handlePostReview();
+        }
+    };
+
     const handleDeleteReview = async (reviewId) => {
         try {
             await deleteReview(reviewId).unwrap();
@@ -106,75 +86,85 @@ const ReviewsSection = ({ data, type }) => {
 
 
     return (
-        <ReviewsSections>
-            < ReviewsTitle> Reviews ({reviewsData?.length}) </ReviewsTitle>
+        <section className="reviewsSection">
+            <h1 className="movieTvReviewsTitle">
+                Reviews <span className="reviewsCount">{reviewsCount}</span>
+            </h1>
 
-            <section className='usersReviewsContent'>
-                <main className='userReviewPost'>
+            <div className='usersReviewsContent'>
+                {/* write a review */}
+                <div className={`userReviewPost ${!user ? "loggedOut" : ""}`}>
                     <div className="usersReviewsContentTop">
-                        <Image src={user?.avatar ? user?.avatar?.url : AvatarDefaultImg}
-                            alt={user?.name}
-                            title={user?.name}
-                            variant='reviewsImg' />
-                        <p>{user?.name}</p>
+                        <img src={user?.avatar?.url || AvatarDefaultImg}
+                            alt="" className="reviewAvatar" />
+                        <div className="reviewAuthor">
+                            <p className="reviewAuthorName">{user ? user.name : "Guest"}</p>
+                            <p className="reviewAuthorHint">
+                                {user ? "Share what you think about it" : (
+                                    <>
+                                        <NavLink to="/signIn" className="reviewSignInLink">Sign in</NavLink> to write a review
+                                    </>
+                                )}
+                            </p>
+                        </div>
                     </div>
                     <div className="usersReviewsContentBottom">
                         <textarea
                             className='reviewTextArea'
-                            placeholder={!user ? "You need to log in to write review" : "Here can you write review"}
+                            placeholder={!user ? "You need to log in to write review" : "Write your review here..."}
                             value={reviewText}
                             disabled={!user}
+                            maxLength={MAX_REVIEW_LENGTH}
+                            onKeyDown={handleKeyDown}
                             onChange={(e) => setReviewText(e.target.value)}>
                         </textarea>
-                        <PostBtn handlePostReview={handlePostReview} />
+                        <div className="reviewPostActions">
+                            {user && (
+                                <span className="reviewCharCount">
+                                    {reviewText.length} / {MAX_REVIEW_LENGTH}
+                                </span>
+                            )}
+                            <PostBtn handlePostReview={handlePostReview} />
+                        </div>
                     </div>
-                </main>
+                </div>
 
                 {/* all reviews */}
-                {reviewsData?.slice(0, displayCount).map((allReview) => (
-                    <main key={allReview._id} className="allUsersReviewsSection">
-                        <div className='allUsersReviewsContent'>
+                {reviewsCount === 0 ? (
+                    <p className="reviewsEmpty">No reviews yet - be the first to write one!</p>
+                ) : (
+                    reviewsData.slice(0, displayCount).map((allReview, i) => (
+                        <article key={allReview._id} className="allUsersReviewsSection" style={{ "--i": i % 3 }}>
                             <div className="allUsersReviewsContentTop">
-                                <Image src={allReview.user?.avatar?.url || AvatarDefaultImg}
-                                    alt={user?.name}
-                                    title={allReview.user?.name}
-                                    variant='reviewsImg' />
-                                <p>{allReview.user?.name}</p>
-                                <p>{new Date(allReview.createdAt).toLocaleDateString()}</p>
-                            </div>
-                            <div className="allUsersReviewsContentBottom">
-                                <textarea
-                                    className='allUsersReviewsTextArea'
-                                    value={allReview.review}
-                                    readOnly
-                                    disabled>
-                                </textarea>
+                                <img src={allReview.user?.avatar?.url || AvatarDefaultImg}
+                                    alt="" className="reviewAvatar" />
+                                <div className="reviewAuthor">
+                                    <p className="reviewAuthorName">{allReview.user?.name}</p>
+                                    <p className="reviewDate">{new Date(allReview.createdAt).toLocaleDateString()}</p>
+                                </div>
                                 {user && user._id === allReview.user?._id && (
-                                    <DeletePostBtn handleDeleteReview={() => handleDeleteReview(allReview._id)} />
+                                    <div className="reviewDeleteBtn">
+                                        <DeletePostBtn handleDeleteReview={() => handleDeleteReview(allReview._id)} />
+                                    </div>
                                 )}
                             </div>
-                        </div>
-                    </main>
-                ))}
-            </section>
+                            <p className="allUsersReviewsText">{allReview.review}</p>
+                        </article>
+                    ))
+                )}
+            </div>
 
             {/* btsn load more hide */}
-            <section className="loadMoreHideBtnContent">
-                {reviewsData?.length > displayCount && (
-                    <div className="loadMoreBtnContent">
-                        <LoadMoreReviewsBtn loadMoreReviews={loadMoreReviews} />
-                    </div>
+            <div className="loadMoreHideBtnContent">
+                {reviewsCount > displayCount && (
+                    <LoadMoreReviewsBtn loadMoreReviews={loadMoreReviews} />
                 )}
 
-                {reviewsData?.length > 3 && displayCount >= reviewsData?.length && (
-                    <div className="loadMoreBtnContent">
-                        <HideReviewsBtn hideReviews={hideReviews} />
-                    </div>
+                {reviewsCount > 3 && displayCount >= reviewsCount && (
+                    <HideReviewsBtn hideReviews={hideReviews} />
                 )}
-            </section>
-            {/* </UserReviewsTableContent >
-            </ReviewsContent > */}
-        </ReviewsSections >
+            </div>
+        </section>
     )
 }
 

@@ -10,7 +10,7 @@ const LoadMoreReviewsBtn = ({ loadMoreReviews }) => {
 
     return (
         <Button variant="loadMore" icon={LoadMore} onClick={loadMoreReviews}>
-            LoadMore
+            Load more
         </Button>
     )
 }

@@ -10,18 +10,20 @@ import missingImg from "../../../../../../../assets/pictures/mising-pic.jpg"
 
 const SliderSwiperMovieTvActorsContent = ({ data }) => {
     return (
-        <>
-            <div className="actorsCard">
-                <NavLink to={`/person/${data.id}`}>
-                    <img src={data?.profile_path ? `https://image.tmdb.org/t/p/w185/${data?.profile_path}` : missingImg} alt={data.name} className="actorsPosterImg" title={data.name} />
-                </NavLink>
-                <div className="actorsBottomContainer">
-                    <p className="actorsName">{data.name}</p>
-                    <p className="actorsAs">As</p>
-                    <p className="actorsCharacterName">{data.character}</p>
-                </div>
+        <NavLink to={`/person/${data.id}`} className="actorsCard" title={data.name}>
+            <div className="actorsPosterWrapper">
+                <img src={data?.profile_path ? `https://image.tmdb.org/t/p/w185/${data?.profile_path}` : missingImg}
+                    alt={data.name} className="actorsPosterImg" loading="lazy" />
             </div>
-        </>
+            <div className="actorsBottomContainer">
+                <p className="actorsName">{data.name}</p>
+                {data.character && (
+                    <p className="actorsCharacterName">
+                        <span className="actorsAs">as</span> {data.character}
+                    </p>
+                )}
+            </div>
+        </NavLink>
     )
 }
 

@@ -1,27 +1,128 @@
 
 
-.movieTvRecommendationsTitle {
-    font-size: 25px;
-    padding: 20px;
+/* title style: OtherDetailsSectionLayouts.css */
+
+/* light band behind the cards (also used for the movies slider on the person page) */
+.swiperSliderRecommendationsMovie,
+.swiperSliderAcorsMovie {
+    height: auto;
+    padding: 20px 8px 0;
+    background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 100%);
 }
 
-.swiperSliderRecommendationsMovie {
-    background-color: rgba(24, 33, 4, 0.434);
-    height: 440px;
+/* white poster card - scoped here so home page sliders keep their look */
+.swiperSliderRecommendationsMovie .kartica,
+.swiperSliderAcorsMovie .kartica {
+    max-width: 200px;
+    margin: 0 auto 36px; /* bottom room for pagination dots */
+    padding: 0 0 14px;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.1);
+    transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.swiperSliderRecommendationsMovie .kartica:hover,
+.swiperSliderAcorsMovie .kartica:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(41, 175, 248, 0.25);
+}
+
+.swiperSliderRecommendationsMovie .topcard,
+.swiperSliderAcorsMovie .topcard {
+    overflow: hidden;
+}
+
+.swiperSliderRecommendationsMovie .poster,
+.swiperSliderAcorsMovie .poster {
+    border-radius: 0;
+    transition: transform 400ms ease;
+}
+
+.swiperSliderRecommendationsMovie .kartica:hover .poster,
+.swiperSliderAcorsMovie .kartica:hover .poster {
+    transform: scale(1.07);
+}
+
+.swiperSliderRecommendationsMovie .botom-card,
+.swiperSliderAcorsMovie .botom-card {
+    gap: 8px;
+    padding: 12px 10px 0;
+}
+
+.swiperSliderRecommendationsMovie .card-title,
+.swiperSliderAcorsMovie .card-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #1f2937;
+}
+
+.swiperSliderRecommendationsMovie .Rating,
+.swiperSliderAcorsMovie .Rating {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1f2937;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    backdrop-filter: none;
+}
+
+.swiperSliderRecommendationsMovie .ratingCircle,
+.swiperSliderAcorsMovie .ratingCircle {
+    padding: 5px 9px;
+    font-size: 12px;
+}
+
+.swiperSliderRecommendationsMovie .ratingCircle:not(.rating-yellow),
+.swiperSliderAcorsMovie .ratingCircle:not(.rating-yellow) {
+    color: white;
+}
+
+/* arrows on the light background: blue arrow in a white circle */
+.swiperSliderRecommendationsMovie .swiper-button-prev,
+.swiperSliderRecommendationsMovie .swiper-button-next,
+.swiperSliderAcorsMovie .swiper-button-prev,
+.swiperSliderAcorsMovie .swiper-button-next,
+.swiperSliderActorsMovie .swiper-button-prev,
+.swiperSliderActorsMovie .swiper-button-next {
+    --swiper-navigation-size: 16px;
+    width: 38px;
+    height: 38px;
+    margin-top: 0;
+    color: #0b84c6;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.swiperSliderRecommendationsMovie .swiper-button-prev:hover,
+.swiperSliderRecommendationsMovie .swiper-button-next:hover,
+.swiperSliderAcorsMovie .swiper-button-prev:hover,
+.swiperSliderAcorsMovie .swiper-button-next:hover,
+.swiperSliderActorsMovie .swiper-button-prev:hover,
+.swiperSliderActorsMovie .swiper-button-next:hover {
+    box-shadow: 0 6px 16px rgba(41, 175, 248, 0.4);
+}
+
+/* active dot in the app blue */
+.swiperSliderRecommendationsMovie .swiper-pagination-bullet-active,
+.swiperSliderAcorsMovie .swiper-pagination-bullet-active,
+.swiperSliderActorsMovie .swiper-pagination-bullet-active {
+    background: #29aff8;
 }
 
 
 @media (max-width: 768px) {
 
-    .swiperSliderRecommendationsMovie {
-        /* background-color: rgba(24, 33, 4, 0.434); */
-        /* cards are fluid on phones - let the height follow them */
-        height: auto;
-        padding-top: 10px;
-    }
-
     .swiper-pagination {
         display: none;
+    }
+
+    .swiperSliderRecommendationsMovie .kartica,
+    .swiperSliderAcorsMovie .kartica {
+        margin-bottom: 24px;
     }
 
 }

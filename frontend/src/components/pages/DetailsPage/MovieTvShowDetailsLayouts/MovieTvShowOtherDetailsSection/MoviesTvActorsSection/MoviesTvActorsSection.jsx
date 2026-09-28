@@ -18,9 +18,9 @@ const MoviesTvActorsSection = ({ id, type }) => {
     const sliderSettings = {
         320: { slidesPerView: 1, spaceBetween: 10 },
         660: { slidesPerView: 2, spaceBetween: 10 },
-        960: { slidesPerView: 3, spaceBetween: 10 },
-        1260: { slidesPerView: 4, spaceBetween: 10 },
-        1600: { slidesPerView: 4, spaceBetween: 10 },
+        960: { slidesPerView: 4, spaceBetween: 16 },
+        1260: { slidesPerView: 5, spaceBetween: 16 },
+        1600: { slidesPerView: 6, spaceBetween: 16 },
     };
 
     // Don't render if no cast data or empty cast array

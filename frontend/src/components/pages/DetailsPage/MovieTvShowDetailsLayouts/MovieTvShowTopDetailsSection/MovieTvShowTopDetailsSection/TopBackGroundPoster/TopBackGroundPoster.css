@@ -1,12 +1,42 @@
 
 
-.MovieTvDetailBgPosterImg {
-    height: 800px;
+/* backdrop fills the whole hero, behind the content */
+.MovieTvDetailBgPoster {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
 }
 
-
-.MovieTvDetailBgPosterImg, .MovieTvDetailBgPoster {
-    max-height: 100%;
+.MovieTvDetailBgPosterImg {
     width: 100%;
-    object-fit: fill;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    animation: backdropZoom 12s ease-out both;
+}
+
+/* light, bright wash over the picture so the white info card stands out */
+.MovieTvDetailBgPoster::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(240, 249, 255, 0) 55%, #f8fbff 100%),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.25) 60%, rgba(15, 23, 42, 0.1) 100%);
+}
+
+/* slow zoom out of the backdrop when the page opens */
+@keyframes backdropZoom {
+    from {
+        transform: scale(1.12);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .MovieTvDetailBgPosterImg {
+        animation: none;
+    }
 }

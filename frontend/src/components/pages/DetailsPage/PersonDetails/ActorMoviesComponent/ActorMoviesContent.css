@@ -1,19 +1,5 @@
 
 
-.actorMoviesTitle {
-    padding: 20px;
-}
+/* title style: OtherDetailsSectionLayouts.css */
 
-
-.swiperSliderAcorsMovie {
-    background-color: rgba(24, 33, 4, 0.434);
-    height: 540px;
-}
-
-@media (max-width: 768px) {
-    /* cards are fluid on phones - let the height follow them */
-    .swiperSliderAcorsMovie {
-        height: auto;
-        padding-top: 10px;
-    }
-}
+/* slider background + card look: see MoviesTvRecommendationsSection.css (.swiperSliderAcorsMovie) */
