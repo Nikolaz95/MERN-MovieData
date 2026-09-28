@@ -35,6 +35,7 @@ import ratingRoutes from "./routes/ratings.js";
 import reviewRoutes from "./routes/reviews.js";
 import favoritListRoutes from "./routes/favoritList.js";
 import favoritActorListRoutes from "./routes/favoritActorList.js";
+import adminStatsRoutes from "./routes/adminStats.js";
 
 
 app.use("/api", authRoutes)
@@ -43,6 +44,7 @@ app.use("/api", ratingRoutes);
 app.use("/api", reviewRoutes);
 app.use("/api", favoritListRoutes);
 app.use("/api", favoritActorListRoutes);
+app.use("/api", adminStatsRoutes);
 
 //connecting backend and frontend
 

@@ -94,6 +94,11 @@ export const userApi = createApi({
             },
             invalidatesTags: ["AdminUsers"],
         }),
+
+        // admin dashboard: top 10 lists + totals
+        getAdminTopStats: builder.query({
+            query: () => `/admin/stats/top`,
+        }),
     }),
 });
 
@@ -107,4 +112,5 @@ export const { useGetMeQuery,
     useUpdateUserMutation,
     useDeleteUserMutation,
     useDeleteMyAccountMutation,
+    useGetAdminTopStatsQuery,
 } = userApi;
