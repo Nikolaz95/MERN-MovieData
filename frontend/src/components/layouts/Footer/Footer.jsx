@@ -18,7 +18,7 @@ const contactLinks = [
     { href: "mailto:nikolajoe95@gmail.com", icon: Gmail, title: "Gmail" },
     { href: "https://github.com/Nikolaz95", icon: GitHub, title: "GitHub" },
     { href: "https://www.linkedin.com/in/nikola-zovko-a50779247/", icon: LinkeDin, title: "Linkedin" },
-    { href: "https://nikolazovko-portfolio.netlify.app/", icon: MyPortfolio, title: "MyPortfolio" },
+    { href: "https://nikolazovkoportfolio.netlify.app/#home", icon: MyPortfolio, title: "MyPortfolio" },
 ];
 
 const Footer = () => {

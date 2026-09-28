@@ -1,34 +1,239 @@
+/* sign in / register page: light background, split card in the middle */
 .sectionLogInRegisterLayout {
     display: flex;
-    flex-direction: column;
-    height: 76.8vh;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - var(--headerHeight));
+    padding: 40px 20px;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    color: #1f2937;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(41, 175, 248, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(30, 213, 169, 0.18) 0%, transparent 40%),
+        linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
 }
 
 .logInRegisterLayoutSection {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    width: 100%;
+    max-width: 940px;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 28px;
+    box-shadow: 0 30px 70px rgba(15, 23, 42, 0.14);
+    animation: authCardIn 550ms cubic-bezier(0.2, 0.9, 0.3, 1.1) both;
 }
 
+/* ---------- left: blue panel ---------- */
+.authPanel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 44px 38px;
+    overflow: hidden;
+    color: white;
+    background: linear-gradient(145deg, #29aff8 0%, #3fc3f0 50%, #1ed5a9 100%);
+}
+
+/* soft circles in the background */
+.authPanel::before,
+.authPanel::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.12);
+    pointer-events: none;
+}
+
+.authPanel::before {
+    top: -80px;
+    right: -80px;
+    width: 240px;
+    height: 240px;
+    animation: authFloat 8s ease-in-out infinite;
+}
+
+.authPanel::after {
+    bottom: -100px;
+    left: -60px;
+    width: 220px;
+    height: 220px;
+    animation: authFloat 10s ease-in-out infinite reverse;
+}
+
+.authPanelLogo {
+    width: 64px;
+    height: 64px;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(11, 132, 198, 0.35);
+}
+
+.authPanelTitle {
+    margin-top: 8px;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.authPanelText {
+    font-size: 15px;
+    line-height: 1.5;
+    opacity: 0.92;
+}
+
+.authBenefits {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 12px;
+    list-style: none;
+}
+
+.authBenefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    line-height: 1.45;
+    animation: authBenefitIn 450ms ease-out backwards;
+    animation-delay: calc(var(--i, 0) * 90ms + 300ms);
+}
+
+.authBenefit strong {
+    display: block;
+    font-size: 15px;
+}
+
+.authBenefitText {
+    opacity: 0.9;
+}
+
+.authBenefitCheck {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    margin-top: 1px;
+    color: #0b84c6;
+    background-color: white;
+    border-radius: 50%;
+}
+
+/* ---------- right: form ---------- */
 .logInRegisterLayoutContent {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: transparent;
-    backdrop-filter: blur(10px);
-    padding: 20px;
-    gap: 20px;
-    border-radius: 20px;
+    justify-content: center;
+    gap: 22px;
+    padding: 44px 42px;
+}
+
+.authFormHeader h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1f2937;
+}
+
+.authFormHeader p {
+    margin-top: 6px;
+    font-size: 15px;
+    color: #64748b;
+}
+
+.authSubmit {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+}
+
+.authSwitch {
+    font-size: 14px;
+    color: #64748b;
+    text-align: center;
+}
+
+.authSwitch a {
+    font-weight: 800;
+    color: #0b84c6;
+    text-decoration: none;
+}
+
+.authSwitch a:hover {
+    text-decoration: underline;
+}
+
+@keyframes authCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes authBenefitIn {
+    from {
+        opacity: 0;
+        transform: translateX(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes authFloat {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-14px, 16px); }
 }
 
 
+/* tablets / phones: form first, benefits below */
 @media only screen and (max-width: 768px) {
-.sectionLogInRegisterLayout {
-display: flex;
-flex-direction: column;
-height: 100%;
-} 
+    .sectionLogInRegisterLayout {
+        align-items: flex-start;
+        padding: 24px 16px 40px;
+    }
 
+    .logInRegisterLayoutSection {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+    }
+
+    .authPanel {
+        order: 2;
+        padding: 28px 24px;
+    }
+
+    .authPanelLogo,
+    .authPanelTitle,
+    .authPanelText {
+        display: none;
+    }
+
+    .authBenefits {
+        margin-top: 0;
+    }
+
+    .logInRegisterLayoutContent {
+        padding: 30px 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .logInRegisterLayoutSection,
+    .authBenefit,
+    .authPanel::before,
+    .authPanel::after {
+        animation: none;
+    }
 }
