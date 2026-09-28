@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import DashBoardLayout from '../../AdminPage/Layouts/DashBoardLayout/DashBoardLayout'
 import UsersLayouts from '../userLayout/UsersLayouts'
 import Button from '../../../../layouts/Buttons/Button'
@@ -12,8 +12,7 @@ import "./DeleteAccount.css"
 import avatarDefault from "../../../../../assets/pictures/avatar-profile.jpg"
 import DeleteBtn from "../../../../../assets/icons/icon-delete-account.png"
 import Image from '../../../../layouts/ImagesContent/Image'
-import Modal from '../../../../layouts/ModalsComponent/ModalLayoutsComponent/ModalComponent/Modal'
-import DeleteAccountModal from '../../../../layouts/ModalsComponent/ModalsContent/DeleteAccountModal'
+import { useModal } from '../../../../context/ModalContext/ModalContext'
 
 //import css
 import "./DeleteAccount.css"
@@ -24,11 +23,8 @@ const DeleteAccount = () => {
     const { user } = useSelector((state) => state.auth);
     console.log(user);
 
-    // State to track which modal is open
-    const [activeModal, setActiveModal] = useState("");
+    const { openDeleteOwnAccountModal } = useModal();
 
-    // Function to close the modal
-    const closeModal = () => setActiveModal("");
     return (
         <DashBoardLayout>
             <h1>Delete Account</h1>
@@ -53,7 +49,7 @@ const DeleteAccount = () => {
                                 <p>{user.email}</p>
                             </div>
                             <div className="deleteAccountBtnDelete">
-                                <Button onClick={() => setActiveModal("deleteAccount")}
+                                <Button onClick={openDeleteOwnAccountModal}
                                     variant="deleteAccount" icon={DeleteBtn}
                                     title="Delete Account">
                                     <p>Delete Account</p>
@@ -63,11 +59,6 @@ const DeleteAccount = () => {
                     </div>
                 </section>
             </UsersLayouts>
-
-            {/* Modal for delete modal */}
-            <Modal isOpen={activeModal === "deleteAccount"} onClose={closeModal}>
-                <DeleteAccountModal onClose={closeModal} />
-            </Modal>
         </DashBoardLayout>
     )
 }

@@ -41,5 +41,26 @@
     color: rgb(255, 255, 255);
   }
   /* boje strelica */
-  
+
+  /* strelice na tabletu i mobitelu - manje, sa tamnim krugom da se vide i preko slike */
+  @media (max-width: 768px) {
+    .swiper-button-prev,
+    .swiper-button-next {
+      --swiper-navigation-size: 16px;
+      width: 34px;
+      height: 34px;
+      margin-top: 0;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .swiper-button-prev {
+      left: 6px;
+    }
+
+    .swiper-button-next {
+      right: 6px;
+    }
+  }
+
   /* strelice  */

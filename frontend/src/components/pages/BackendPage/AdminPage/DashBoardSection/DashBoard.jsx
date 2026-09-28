@@ -5,7 +5,7 @@ import styled from "styled-components";
 import "./DashBoard.css"
 
 const AdminDashBoardSection = styled.section`
-    height: 86.7vh;
+    height: calc(100vh - var(--headerHeight));
 `;
 
 //import img

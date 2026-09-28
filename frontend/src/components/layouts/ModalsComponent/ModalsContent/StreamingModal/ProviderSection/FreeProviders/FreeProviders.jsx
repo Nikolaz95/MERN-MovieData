@@ -4,6 +4,9 @@ import React from 'react'
 //import css
 import "./FreeProviders.css";
 
+//import img
+import Missing from "../../../../../../../assets/pictures/mising-pic.jpg"
+
 const FreeProviders = ({ freeProviders }) => {
     return (
         <>

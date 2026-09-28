@@ -50,3 +50,15 @@
   padding: 10px;
   /* height: 200px; */
 }
+
+
+/* phones: cards under each other instead of next to each other */
+@media only screen and (max-width: 600px) {
+  .dataFactContentTop {
+    flex-direction: column;
+  }
+
+  .dataFactContentBottom {
+    grid-template-columns: 1fr;
+  }
+}

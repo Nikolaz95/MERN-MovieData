@@ -11,7 +11,6 @@ import streamingImg from "../../../../../assets/pictures/poster5.jpg"
 
 //import components
 import Button from '../../../Buttons/Button';
-import { useParams } from 'react-router-dom';
 import getApiUrl from '../../../../hooks/getApiUrl';
 import useFetch from '../../../../hooks/useFetch';
 import FreeProviders from './ProviderSection/FreeProviders/FreeProviders';
@@ -20,8 +19,8 @@ import ProviderSection from './ProviderSection/StreamingProviders/ProviderSectio
 const StreamingModal = ({ movieInfo, onClose, type }) => {
 
     /* fetch */
-    const { id, slug, params } = useParams();
-    const apiUrl = getApiUrl(`${type}/${id}/watch/providers`);
+    // id from movieInfo - modal is rendered in GlobalModals, outside the details route
+    const apiUrl = getApiUrl(`${type}/${movieInfo?.id}/watch/providers`);
     const { data, loading, error } = useFetch(apiUrl);
     console.log(data);
 

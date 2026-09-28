@@ -7,7 +7,21 @@
 
 
 :root {
-  --iconSize: 30px; 
+  --iconSize: 30px;
   --baseTextSize: 20px;
   --baseTextColor: white;
+  /* header / footer / side menu - light theme in the app's blue */
+  --headerHeight: 76px;
+  --brandBlue: #29aff8;
+  --brandBlueDark: #0b84c6;
+  --brandTeal: #1ed5a9;
+  --headerGradient: linear-gradient(120deg, #29aff8 0%, #3fc3f0 55%, #1ed5a9 100%);
+  --lightText: #1f2937;
+  --mutedText: #64748b;
+}
+
+@media only screen and (max-width: 750px) {
+  :root {
+    --headerHeight: 64px;
+  }
 }

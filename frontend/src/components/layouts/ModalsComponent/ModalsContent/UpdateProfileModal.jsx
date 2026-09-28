@@ -1,70 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { useGetUserDetailsQuery, useUpdateProfileMutation, useUpdateUserMutation } from '../../../../redux/api/userApi'
-import { useSelector } from 'react-redux'
-import Button from '../../Buttons/Button'
-import styled from "styled-components"
-import Image from '../../ImagesContent/Image'
+import { useGetUserDetailsQuery, useUpdateUserMutation } from '../../../../redux/api/userApi'
 import toast from 'react-hot-toast';
 
+//import img
+import avatarDefault from "../../../../assets/pictures/avatar-profile.jpg"
 
+//import components
+import {
+    ModalCard, CloseX, CloseIcon, ModalHeader, Avatar, Title, SubText,
+    Form, Field, Label, Input, RoleToggle, RoleOption,
+    Actions, GhostButton, PrimaryButton
+} from './AdminModalStyles';
 
-//import icon
-import UpdateAcc from "../../../../assets/icons/icon-update.png"
-
-const UpdateAccountModalLayout = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
-    background-color: bisque;
-    border-radius: 30px;
-`
-const UpdateAccountModalContent = styled.form`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
-    background-color: bisque;
-    border-radius: 30px;
-`
-
-const Input = styled.input`
-border: none;
-  border-radius: 10px;
-padding: 10px;
-`;
-
-const InputSelect = styled.select`
-width: 100%;
-border: none;
-text-align: center;
-border-radius: 10px;
-padding: 10px;
-`;
-
-/* const Input = styled.input<{ $inputColor?: string; }>`
-  padding: 0.5em;
-  margin: 0.5em;
-  color: ${props => props.$inputColor || "#BF4F74"}; //ovo je da mnjenjam boje u inputu
-  background: papayawhip;
-  border: none;
-  border-radius: 3px;
-`; */
+const ROLES = ["user", "admin"];
 
 const UpdateProfileModal = ({ userId, onClose }) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [role, setRole] = useState("");
 
-    const navigate = useNavigate();
-    const params = useParams();
-    const { data } = useGetUserDetailsQuery(userId);
-    const [updateUser, { error, isSuccess }] = useUpdateUserMutation();
+    const { data, isLoading: isLoadingUser } = useGetUserDetailsQuery(userId);
+    const [updateUser, { error, isSuccess, isLoading: isSaving }] = useUpdateUserMutation();
 
     useEffect(() => {
         if (data?.user) {
@@ -94,36 +50,58 @@ const UpdateProfileModal = ({ userId, onClose }) => {
     };
 
     return (
-        <UpdateAccountModalLayout>
-            <h1>Update Profile</h1>
-            <UpdateAccountModalContent onSubmit={submitHandler}>
-                <label htmlFor="name_field" className="formLabel">Name:</label>
-                <Input type="text" id="name_field"
-                    className="form-control" placeholder='fakeUserName'
-                    value={name} onChange={(e) =>
-                        setName(e.target.value)} name="name" />
-                <label htmlFor="email_field" className="form-label">Email:</label>
+        <ModalCard role="dialog" aria-labelledby="updateModalTitle">
+            <CloseX type="button" onClick={onClose} aria-label="Close">
+                <CloseIcon />
+            </CloseX>
 
-                <Input type="email" placeholder='fake@email.com' value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    id="email_field" className="form-control" name="email" />
+            <ModalHeader>
+                <Avatar src={data?.user?.avatar?.url || avatarDefault} alt="" />
+                <div>
+                    <Title id="updateModalTitle">Update user</Title>
+                    <SubText>{isLoadingUser ? "Loading..." : data?.user?.email}</SubText>
+                </div>
+            </ModalHeader>
 
-                <label htmlFor="role_field">
-                    Role
-                </label>
-                <InputSelect name="role" value={role}
-                    onChange={(e) => setRole(e.target.value)} id="role_field">
-                    <option value="user">user</option>
-                    <option value="admin">admin</option>
-                </InputSelect>
+            <Form onSubmit={submitHandler}>
+                <Field>
+                    <Label htmlFor="name_field">Name</Label>
+                    <Input type="text" id="name_field" name="name"
+                        placeholder='fakeUserName'
+                        value={name} onChange={(e) => setName(e.target.value)} />
+                </Field>
 
-                <Button type="submit">
-                    <Image src={UpdateAcc} variant='iconImg' alt="" title='Update' />
-                    Update
-                </Button>
+                <Field>
+                    <Label htmlFor="email_field">Email</Label>
+                    <Input type="email" id="email_field" name="email"
+                        placeholder='fake@email.com'
+                        value={email} onChange={(e) => setEmail(e.target.value)} />
+                </Field>
 
-            </UpdateAccountModalContent>
-        </UpdateAccountModalLayout>
+                <Field>
+                    <Label as="span">Role</Label>
+                    <RoleToggle role="radiogroup" aria-label="Role">
+                        {ROLES.map((r) => (
+                            <RoleOption key={r} type="button"
+                                role="radio" aria-checked={role === r}
+                                $active={role === r}
+                                onClick={() => setRole(r)}>
+                                {r}
+                            </RoleOption>
+                        ))}
+                    </RoleToggle>
+                </Field>
+
+                <Actions>
+                    <GhostButton type="button" onClick={onClose} disabled={isSaving}>
+                        Cancel
+                    </GhostButton>
+                    <PrimaryButton type="submit" disabled={isSaving || isLoadingUser}>
+                        {isSaving ? "Saving..." : "Save changes"}
+                    </PrimaryButton>
+                </Actions>
+            </Form>
+        </ModalCard>
     )
 }
 

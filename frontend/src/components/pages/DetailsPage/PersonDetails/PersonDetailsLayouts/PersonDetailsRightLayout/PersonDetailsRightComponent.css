@@ -25,6 +25,8 @@
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     gap: 20px;
+    /* long words pushed the text out of the screen on small phones */
+    overflow-wrap: anywhere;
 }
 
 .biografyText p {
@@ -39,7 +41,13 @@
 }
 
 .biografy {
+    width: 100%;
     height: 400px;
     overflow-y: auto;
+}
+
+.biografyText {
+    font-size: 1.1rem;
+    line-height: 1.7;
 }
 }

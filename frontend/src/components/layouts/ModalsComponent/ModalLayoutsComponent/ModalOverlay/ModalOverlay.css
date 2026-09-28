@@ -5,9 +5,34 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    animation: overlayFadeIn 200ms ease-out;
+}
+
+/* closing duration must match CLOSE_ANIMATION_MS in Modal.jsx */
+.modalOverlay.closing {
+    animation: overlayFadeOut 200ms ease-in forwards;
+    pointer-events: none;
+}
+
+@keyframes overlayFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes overlayFadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .modalOverlay,
+    .modalOverlay.closing {
+        animation: none;
+    }
 }

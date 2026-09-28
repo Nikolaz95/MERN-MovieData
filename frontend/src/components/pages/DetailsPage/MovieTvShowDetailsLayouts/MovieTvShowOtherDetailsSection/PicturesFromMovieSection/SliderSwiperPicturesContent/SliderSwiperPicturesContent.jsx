@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 
 //import css
@@ -8,26 +8,15 @@ import "./SliderSwiperPicturesContent.css";
 import missingImg from "../../../../../../../assets/pictures/mising-pic.jpg"
 
 //import components
-import Modal from '../../../../../../layouts/ModalsComponent/ModalLayoutsComponent/ModalComponent/Modal';
-import MovieTvShowPictureModal from '../../../../../../layouts/ModalsComponent/ModalsContent/MovieTvShowPictureModal';
+import { useModal } from '../../../../../../context/ModalContext/ModalContext';
 
 const SliderSwiperPicturesContent = ({ data }) => {
-    // State to track which modal is open
-    const [activeModal, setActiveModal] = useState("");
+    const { openPictureModal } = useModal();
 
-    // Function to close the modal
-    const closeModal = () => setActiveModal("");
     return (
-        <>
-            <div>
-                <img src={data.file_path ? `https://image.tmdb.org/t/p/w500${data.file_path}` : missingImg} alt={data.title} className="pitcutreOfMovieImg" onClick={() => setActiveModal("text1")} />
-            </div>
-
-            {/* Modal for Text 1 */}
-            <Modal isOpen={activeModal === "text1"} onClose={closeModal}>
-                <MovieTvShowPictureModal data={data} />
-            </Modal>
-        </>
+        <div>
+            <img src={data.file_path ? `https://image.tmdb.org/t/p/w500${data.file_path}` : missingImg} alt={data.title} className="pitcutreOfMovieImg" onClick={() => openPictureModal(data)} />
+        </div>
     )
 }
 

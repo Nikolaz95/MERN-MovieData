@@ -1,11 +1,25 @@
 /* logo */
 
 .logo {
-    width: 100px;
-    height: 100px;
-    border-radius: 20px;
+    display: block;
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(11, 132, 198, 0.35);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.logo:hover {
+    transform: scale(1.08) rotate(-3deg);
+    box-shadow: 0 6px 18px rgba(11, 132, 198, 0.5);
 }
 
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 750px) {
+    .logo {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+    }
 }

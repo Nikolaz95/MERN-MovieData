@@ -97,6 +97,48 @@
 
   /* media query */
 
+/* phones: slim sidebar that floats over the content when opened */
+@media screen and (max-width: 600px) {
+    .dashBoardSideBarSection {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 20;
+        height: auto;
+        gap: 15px;
+        background-color: white;
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+
+    .dashBoardSideBarSection.closed {
+        width: 64px;
+    }
+
+    .dashBoardSideBarSection.open {
+        width: 200px;
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .dashBoardSideBarSection .sideNavBarTop {
+        padding: 10px 4px;
+        gap: 10px;
+        font-size: 12px;
+        text-align: center;
+        overflow-wrap: anywhere;
+    }
+
+    .dashBoardSideBarSection .userProfileImgDashBoard {
+        width: 40px;
+        height: 40px;
+    }
+
+    .dashBoardSideBarSection .sideNavLink {
+        padding: 4px;
+    }
+}
+
 @media screen and (min-width: 320px ) {
     .dashBoardDropdownSideBar ul {
         display: flex;

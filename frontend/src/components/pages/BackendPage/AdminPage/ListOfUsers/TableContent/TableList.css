@@ -42,3 +42,56 @@ th, td {
     cursor: pointer;
 }
 
+
+/* phones: every row becomes a card, the column name comes from data-label */
+@media only screen and (max-width: 600px) {
+    .userTable {
+        border: none;
+    }
+
+    .userTable thead {
+        display: none;
+    }
+
+    .userTable,
+    .userTable tbody,
+    .userTable tr,
+    .userTable td {
+        display: block;
+        width: 100%;
+    }
+
+    .userTable tr {
+        margin-bottom: 12px;
+        padding: 6px 12px;
+        border: 1px solid black;
+        border-radius: 12px;
+    }
+
+    .userTable td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 0;
+        border: none;
+        text-align: right;
+        overflow-wrap: anywhere;
+    }
+
+    .userTable td:not(:last-child) {
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .userTable td::before {
+        content: attr(data-label);
+        flex-shrink: 0;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .userTable .btn-userListContent {
+        justify-content: flex-end;
+    }
+}
+

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 
 //import css
@@ -20,7 +21,7 @@ import { useLazyLogoutQuery } from '../../../redux/api/authApi';
 // import  components
 
 
-const HeaderNavigation = ({ isSideMenuOpen, toggleSideMenu }) => {
+const HeaderNavigation = ({ isSideMenuOpen, closeSideMenu }) => {
 
     const navigate = useNavigate();
     const { isLoading } = useGetMeQuery();
@@ -51,9 +52,6 @@ const HeaderNavigation = ({ isSideMenuOpen, toggleSideMenu }) => {
     };
 
 
-    // Ref for both dropdown menu and toggle button
-    /* const dropdownRef = useOutsideClick(() => setIsDropdownOpen(false)); */
-
     // Toggle dropdown menu
     const handleDropdownToggle = () => {
         setIsDropdownOpen(prev => !prev);
@@ -61,14 +59,21 @@ const HeaderNavigation = ({ isSideMenuOpen, toggleSideMenu }) => {
 
     const handleNavLinkClick = () => {
         setIsDropdownOpen(false); // Close dropdown menu
-        if (isSideMenuOpen) toggleSideMenu(false); // Close side menu if open
+        if (isSideMenuOpen) closeSideMenu(); // Close side menu if open
     };
 
-    const dropdownRef = useOutsideClick((e) => {
-        if (!e.target.closest('.dropdownMenu') && !e.target.closest('.userIconWrapper')) {
-            setIsDropdownOpen(false);
-        }
-    });
+    // Ref on the whole user item (button + dropdown) - click / tap outside closes the dropdown
+    const dropdownRef = useOutsideClick(() => setIsDropdownOpen(false), isDropdownOpen);
+
+    // close dropdown on `Esc`
+    useEffect(() => {
+        if (!isDropdownOpen) return;
+        const handleKeyDown = (e) => {
+            if (e.key === "Escape") setIsDropdownOpen(false);
+        };
+        document.addEventListener("keydown", handleKeyDown);
+        return () => document.removeEventListener("keydown", handleKeyDown);
+    }, [isDropdownOpen]);
 
 
     return (
@@ -93,10 +98,11 @@ const HeaderNavigation = ({ isSideMenuOpen, toggleSideMenu }) => {
                     </NavLink>
                 </li>
                 {user ? (
-                    <li className="navigationListItem userDropdownContainer">
+                    <li className="navigationListItem userDropdownContainer" ref={dropdownRef}>
                         <div className="userIconWrapper navigationLink"
                             onClick={handleDropdownToggle}
-                            ref={dropdownRef} // Attach ref to parent div
+                            role="button" tabIndex={0} aria-expanded={isDropdownOpen}
+                            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), handleDropdownToggle())}
                         >
                             <img
                                 src={
@@ -134,9 +140,8 @@ const HeaderNavigation = ({ isSideMenuOpen, toggleSideMenu }) => {
                 ) : (
                     !isLoading && (
                         <li className="navigationListItem">
-                            <NavLink to="/signIn" className="navigationLink">
-                                <img src={SingIn} alt="Sign In" className="iconNavigation"
-                                    onClick={handleNavLinkClick} />
+                            <NavLink to="/signIn" className="navigationLink" onClick={handleNavLinkClick}>
+                                <img src={SingIn} alt="Sign In" className="iconNavigation" />
                                 <p className="textNavigation">
                                     Sign In
                                 </p>

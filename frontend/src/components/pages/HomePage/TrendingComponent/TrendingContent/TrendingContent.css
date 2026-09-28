@@ -61,7 +61,8 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 5;
-  overflow-y: auto;
+  /* line-clamp only works with overflow hidden - with auto the text spilled out of the box */
+  overflow: hidden;
 }
   
 .TrendingOverWiev::-webkit-scrollbar {
@@ -90,12 +91,15 @@
 
   
 @media only screen and (max-width: 425px) {
-  
+
+/* center the poster on every phone width */
 .TrendingPosterContent {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .TrendingPosterCard {
@@ -121,15 +125,6 @@
   
   
 @media only screen and (max-width: 375px) {
-.TrendingPosterContent {
-  display: flex;
-  position: absolute;
-  bottom: 75px;
-  left: 36px;
-  gap: 10px;
-}
-
-  
 .TrendingPosterCard {
   width: 250px;
   height: 400px;
@@ -154,11 +149,7 @@
   
 @media only screen and (max-width: 320px) {
 .TrendingPosterContent {
-  display: flex;
-  position: absolute;
   bottom: 90px;
-  left: 5px;
-  gap: 10px;
 }
 
 .TrendingPosterCard {

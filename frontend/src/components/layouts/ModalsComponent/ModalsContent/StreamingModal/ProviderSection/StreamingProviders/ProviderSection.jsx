@@ -4,6 +4,9 @@ import React from 'react'
 //import css
 import "./ProviderSection.css";
 
+//import img
+import Missing from "../../../../../../../assets/pictures/mising-pic.jpg"
+
 const ProviderSection = ({ streamingProviders }) => {
     return (
         <>

@@ -1,34 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 //import css
 import "./TableList.css"
 
 //import icon
 import UpdateAcc from "../../../../../../assets/icons/icon-update.png"
 import DeleteAcc from "../../../../../../assets/icons/icon-delete-account.png"
-import Modal from '../../../../../layouts/ModalsComponent/ModalLayoutsComponent/ModalComponent/Modal'
-import DeleteAccountModal from '../../../../../layouts/ModalsComponent/ModalsContent/DeleteAccountModal'
-import UpdateProfileModal from '../../../../../layouts/ModalsComponent/ModalsContent/UpdateProfileModal'
+import { useModal } from '../../../../../context/ModalContext/ModalContext'
 
 const TableList = ({ currentUsers }) => {
-    // State to track which modal is open
-    const [activeModal, setActiveModal] = useState("");
-    const [selectedUserId, setSelectedUserId] = useState(null);
-    // Function to close the modal
-    const closeModal = () => setActiveModal("");
-
-    const handleUpdateClick = (userId) => {
-        setSelectedUserId(userId);
-        setActiveModal("updateAccount");
-    };
-
-    const handleDeleteClick = (userId) => {
-        setSelectedUserId(userId);
-        setActiveModal("deleteAccount");
-    };
+    const { openUpdateUserModal, openDeleteUserModal } = useModal();
 
     return (
         <section className='tableSection'>
-            <table>
+            <table className='userTable'>
                 <thead>
                     <tr>
                         <th>#ID</th>
@@ -43,21 +27,22 @@ const TableList = ({ currentUsers }) => {
                 <tbody>
                     {currentUsers.map((user) => (
                         <tr key={user._id}>
-                            <td># {user._id}</td>
-                            <td>{user.name}</td>
-                            <td>{user.email}</td>
-                            <td>{user.createdAt?.substring(0, 10)}</td>
-                            <td>{user.role}</td>
-                            <td>
+                            {/* data-label = column name shown on phones (TableList.css) */}
+                            <td data-label="#ID"># {user._id}</td>
+                            <td data-label="Name">{user.name}</td>
+                            <td data-label="Email">{user.email}</td>
+                            <td data-label="Created">{user.createdAt?.substring(0, 10)}</td>
+                            <td data-label="Role">{user.role}</td>
+                            <td data-label="Actions">
                                 <div className='btn-userListContent'>
                                     <button className='btn-userList'
-                                        onClick={() => handleUpdateClick(user._id)}>
+                                        onClick={() => openUpdateUserModal(user._id)}>
 
                                         <img src={UpdateAcc} alt=""
                                             className='btnIcon-userList' title='Update' />
                                     </button>
                                     <button className='btn-userList'
-                                        onClick={() => handleDeleteClick(user._id)}>
+                                        onClick={() => openDeleteUserModal(user)}>
                                         <img src={DeleteAcc} alt="" className='btnIcon-userList' title='Delete' />
                                     </button>
                                 </div>
@@ -66,14 +51,6 @@ const TableList = ({ currentUsers }) => {
                     ))}
                 </tbody>
             </table>
-
-            <Modal isOpen={activeModal === "updateAccount"} onClose={closeModal}>
-                <UpdateProfileModal userId={selectedUserId} onClose={closeModal} />
-            </Modal>
-
-            <Modal isOpen={activeModal === "deleteAccount"} onClose={closeModal}>
-                <DeleteAccountModal userId={selectedUserId} onClose={closeModal} />
-            </Modal>
         </section>
 
 
