@@ -1,6 +1,16 @@
 
 
+/* light page background */
 .sectionSearchPage {
-    padding: 20px;
-    min-height: 74.6vh;
+    min-height: calc(100vh - var(--headerHeight));
+    padding: 0 20px 48px;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    color: #1f2937;
+    background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 30%, #ffffff 100%);
+}
+
+@media only screen and (max-width: 425px) {
+    .sectionSearchPage {
+        padding: 0 16px 40px;
+    }
 }

@@ -3,15 +3,12 @@ import { useLocation } from 'react-router-dom';
 
 
 
-//import  icon
-import backGroundImg from '../../../../assets/pictures/slikafilm.jpg';
 
 import titleName from '../../../hooks/useTitle';
 import useFetch from '../../../hooks/useFetch';
 import getApiUrl from '../../../hooks/getApiUrl';
 import TopContent from '../MovieTvShowsListPageLayouts/TopContent/TopContent';
 import MovieTvShowsListContent from '../MovieTvShowsListPageLayouts/MovieTvShowsListContent/MovieTvShowsListContent';
-import BackGroudImg from '../../../layouts/BackGroundContent/BackGroudImg/BackGroudImg';
 
 
 const tvOptions = [
@@ -53,8 +50,7 @@ const TvShowsListsPage = () => {
 
     titleName('TvShows List Page');
     return (
-        <>
-            <BackGroudImg image={backGroundImg} />
+        <div className='movieTvListPage'>
             <TopContent
                 initialTitle={categoryTitle}
                 options={tvOptions}
@@ -64,10 +60,10 @@ const TvShowsListsPage = () => {
                 items={tvShows?.results}
                 loading={loading}
                 error={error}
-                titleKey="title"
-                dateKey="release_date"
+                titleKey="name"
+                dateKey="first_air_date"
                 type="tv" />
-        </>
+        </div>
     )
 }
 

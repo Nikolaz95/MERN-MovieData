@@ -40,7 +40,7 @@
     transition: transform 200ms ease;
 }
 
-.countrySelectChevron.open {
+.countrySelectChevron.rotated {
     transform: rotate(180deg);
 }
 

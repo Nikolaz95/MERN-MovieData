@@ -1,9 +1,128 @@
 
 
-.searchInputType {
-    font-size: 20px;
-    font-weight: bold;
+/* big search field */
+.searchInputForm {
+    position: relative;
+    display: flex;
+    align-items: center;
     width: 100%;
-    padding: 20px 5px;
-    border-radius: 20px;
+    animation: searchFadeUp 500ms ease-out 160ms both;
+}
+
+.searchInputIcon {
+    position: absolute;
+    left: 22px;
+    color: #29aff8;
+    pointer-events: none;
+    transition: transform 250ms ease;
+}
+
+.searchInputForm:focus-within .searchInputIcon {
+    transform: scale(1.1) rotate(-8deg);
+}
+
+.searchInputType {
+    width: 100%;
+    height: 62px;
+    padding: 0 96px 0 58px;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+    background-color: white;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    outline: none;
+    box-shadow: 0 10px 30px rgba(41, 175, 248, 0.18);
+    transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.searchInputType::placeholder {
+    font-weight: 500;
+    color: #94a3b8;
+}
+
+/* hide the browser's own clear X of type="search" */
+.searchInputType::-webkit-search-cancel-button {
+    display: none;
+}
+
+.searchInputType:focus {
+    border-color: #29aff8;
+    box-shadow: 0 12px 34px rgba(41, 175, 248, 0.28), 0 0 0 5px rgba(41, 175, 248, 0.12);
+}
+
+.searchInputActions {
+    position: absolute;
+    right: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.searchClearBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    color: #64748b;
+    background-color: #f1f5f9;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    animation: searchPop 200ms ease-out;
+    transition: background-color 200ms ease, color 200ms ease, transform 250ms ease;
+}
+
+.searchClearBtn:hover {
+    color: #0b84c6;
+    background-color: #e0f2fe;
+    transform: rotate(90deg);
+}
+
+/* spinner while TMDB is searching */
+.searchSpinner {
+    width: 22px;
+    height: 22px;
+    border: 3px solid #e0f2fe;
+    border-top-color: #29aff8;
+    border-radius: 50%;
+    animation: searchSpin 700ms linear infinite;
+}
+
+@keyframes searchSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes searchPop {
+    from {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .searchInputType {
+        height: 54px;
+        padding: 0 88px 0 50px;
+        font-size: 16px;
+    }
+
+    .searchInputIcon {
+        left: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .searchInputForm,
+    .searchClearBtn {
+        animation: none;
+    }
 }

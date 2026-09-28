@@ -4,7 +4,54 @@
 .sectionSearchPageTopContent {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 20px;
+    align-items: center;
+    gap: 22px;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 44px 0 28px;
 }
 
+.searchHero {
+    text-align: center;
+    animation: searchFadeUp 500ms ease-out both;
+}
+
+.searchHeroTitle {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    background: linear-gradient(120deg, #0b84c6 0%, #29aff8 50%, #1ed5a9 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.searchHeroSubtitle {
+    margin-top: 6px;
+    font-size: 16px;
+    color: #64748b;
+}
+
+@keyframes searchFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .sectionSearchPageTopContent {
+        gap: 18px;
+        padding: 32px 0 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .searchHero {
+        animation: none;
+    }
+}

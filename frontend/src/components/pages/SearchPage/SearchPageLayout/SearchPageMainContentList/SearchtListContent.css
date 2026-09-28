@@ -1,90 +1,300 @@
 
 
 .sectionSearchList {
-    padding: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
+.searchResultsCount {
+    margin-bottom: 16px;
+    font-size: 15px;
+    color: #64748b;
+    animation: searchFadeUp 350ms ease-out both;
+}
+
+.searchResultsCount strong {
+    color: #0b84c6;
+}
+
+/* fluid grid of cards */
 .searchListContent {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    justify-items: center;
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 22px;
+    max-width: 1300px;
+    margin: 0 auto;
+    transition: opacity 200ms ease;
 }
 
-.noResultsText {
-    display: flex;
-    justify-content: center;
-    font-size: 25px;
-    color: white;
+/* old results fade a bit while the new search is loading */
+.searchListContent.updating {
+    opacity: 0.55;
 }
-
 
 .searchResCard {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 250px;
-    gap: 10px;
-    border: 1px solid rgb(255, 255, 255);
+    overflow: hidden;
+    color: #1f2937;
+    text-decoration: none;
+    background-color: white;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    transition: transform 250ms ease, box-shadow 250ms ease;
+    /* backwards (not both): after the entry the hover lift still works */
+    animation: searchCardIn 420ms ease-out backwards;
+    animation-delay: calc(var(--i, 0) * 45ms);
+}
+
+.searchResCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(41, 175, 248, 0.22);
 }
 
 .searchCardTop {
-    border-radius: 20px;
-    width: 100%;
-    height: 380px;
+    position: relative;
+    overflow: hidden;
 }
 
 .searchCardPoster {
-    border-radius: 20px;
+    display: block;
     width: 100%;
-    height: 380px;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    transition: transform 400ms ease;
+}
+
+.searchResCard:hover .searchCardPoster {
+    transform: scale(1.06);
+}
+
+.searchCardYear {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    background-color: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(6px);
+    border-radius: 999px;
 }
 
 .searchCardBottom {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 12px 14px;
     text-align: center;
 }
 
-
 .searchContentTitle {
-    color: white;
-    font-size: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.3;
+    color: #1f2937;
 }
 
+.searchCardRating .Rating {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1f2937;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    backdrop-filter: none;
+}
 
+.searchCardRating .ratingCircle {
+    padding: 5px 9px;
+    font-size: 12px;
+}
+
+.searchCardRating .ratingCircle:not(.rating-yellow) {
+    color: white;
+}
+
+/* actor card extras */
+.searchCardDepartment {
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #0b84c6;
+    background-color: #e0f2fe;
+    border-radius: 999px;
+}
+
+.searchCardKnownFor {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    font-size: 13px;
+    line-height: 1.35;
+    color: #64748b;
+}
+
+/* empty / no results / start state */
+.searchState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 40px 16px;
+    text-align: center;
+    animation: searchFadeUp 450ms ease-out both;
+}
+
+.searchStateIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 84px;
+    height: 84px;
+    margin-bottom: 8px;
+    color: #29aff8;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 10px 26px rgba(41, 175, 248, 0.2);
+    animation: searchFloat 3s ease-in-out infinite;
+}
+
+.searchStateIcon.empty {
+    color: #94a3b8;
+}
+
+.searchStateTitle {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1f2937;
+}
+
+.searchStateText {
+    font-size: 15px;
+    color: #64748b;
+}
+
+/* loading skeleton */
+.searchResCard.skeleton {
+    gap: 12px;
+    padding-bottom: 16px;
+}
+
+.searchResCard.skeleton:hover {
+    transform: none;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+
+.searchSkeletonPoster,
+.searchSkeletonLine {
+    background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%);
+    background-size: 200% 100%;
+    animation: searchSkeletonShine 1.2s linear infinite;
+}
+
+.searchSkeletonPoster {
+    aspect-ratio: 2 / 3;
+}
+
+.searchSkeletonLine {
+    height: 14px;
+    margin: 0 16px;
+    border-radius: 7px;
+}
+
+/* show more */
 .loadMoreBtnContent {
     display: flex;
     justify-content: center;
+    margin-top: 32px;
 }
 
-
-@media only screen and (max-width: 1024px) {
-.searchListContent {
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-justify-items: center;
-gap: 10px;
-}
-
-}
-
-
-@media only screen and (max-width: 768px) {
-.searchListContent {
-display: grid;
-grid-template-columns: 1fr 1fr;
-justify-items: center;
-gap: 10px;
-}
-   }
-
-
-@media only screen and (max-width: 425px) {
-.searchListContent {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
+.searchShowMoreBtn {
+    display: inline-flex;
+    align-items: center;
     gap: 10px;
+    height: 46px;
+    padding: 0 8px 0 22px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0b84c6;
+    background-color: white;
+    border: none;
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 2px #29aff8, 0 6px 16px rgba(41, 175, 248, 0.18);
+    cursor: pointer;
+    transition: background-color 200ms ease, transform 200ms ease;
 }
+
+.searchShowMoreBtn:hover {
+    background-color: #e0f2fe;
+    transform: translateY(-2px);
+}
+
+.searchShowMoreBtn:active {
+    transform: scale(0.97);
+}
+
+.searchShowMoreCount {
+    padding: 5px 10px;
+    font-size: 12px;
+    color: white;
+    background: linear-gradient(120deg, #29aff8 0%, #1ed5a9 100%);
+    border-radius: 999px;
+}
+
+@keyframes searchCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.97);
     }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes searchFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes searchSkeletonShine {
+    from { background-position: 200% 0; }
+    to { background-position: -200% 0; }
+}
+
+
+/* phones: 2 small cards per row */
+@media only screen and (max-width: 520px) {
+.searchListContent {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.searchCardBottom {
+    padding: 10px 8px 12px;
+}
+
+.searchContentTitle {
+    font-size: 14px;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .searchResCard,
+    .searchState,
+    .searchStateIcon,
+    .searchSkeletonPoster,
+    .searchSkeletonLine,
+    .searchResultsCount {
+        animation: none;
+    }
+}

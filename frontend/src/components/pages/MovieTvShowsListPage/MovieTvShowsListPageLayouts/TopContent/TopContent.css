@@ -1,6 +1,11 @@
 
+/* light band on top of the list: title left, category dropdown right */
 .sectionOverMovieTvShows {
-    padding: 20px;
+    position: relative;
+    z-index: 5; /* dropdown above the cards */
+    padding: 36px 20px 24px;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(180deg, #e0f2fe 0%, rgba(240, 249, 255, 0) 100%);
 }
 
 .overMovieTvShowsContent {
@@ -8,38 +13,63 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    gap: 16px;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
 .categoryTitleName {
-    color: white;
-    font-size: 25px;
-    padding: 10px;
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 800;
+    color: #1f2937;
+    animation: categoryTitleIn 400ms ease-out both;
+}
+
+.categoryTitleName::before {
+    content: "";
+    flex-shrink: 0;
+    width: 6px;
+    height: 1.1em;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #29aff8 0%, #1ed5a9 100%);
+}
+
+@keyframes categoryTitleIn {
+    from {
+        opacity: 0;
+        transform: translateX(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 
 
 @media only screen and (max-width: 490px) {
+.sectionOverMovieTvShows {
+    padding: 28px 16px 16px;
+}
+
 .overMovieTvShowsContent {
-    display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 }
 
-
-@media only screen and (max-width: 370px) {
-.overMovieTvShowsContent {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+@media (prefers-reduced-motion: reduce) {
+    .categoryTitleName {
+        animation: none;
+    }
 }
 
-.categoryTitleName {
-    font-size: 25px;
-    padding: 0px;
-    font-weight: bold
-}
-
+/* light page background (Movies / TV Shows list pages) */
+.movieTvListPage {
+    min-height: calc(100vh - var(--headerHeight));
+    background: linear-gradient(180deg, #f0f9ff 0%, #f8fbff 40%, #ffffff 100%);
 }

@@ -1,111 +1,200 @@
-
 /* movie lsit content */
 
 .movieTvList {
-    padding: 20px;
+    padding: 8px 20px 48px;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
+/* fluid grid: as many ~220px cards as fit */
 .movieTvListContent {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    justify-items: center;
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
+/* white card */
 .movieTvListCard {
     display: flex;
     flex-direction: column;
-    width: 250px;
-    /* border: 1px solid black; */
+    overflow: hidden;
+    background-color: white;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    transition: transform 250ms ease, box-shadow 250ms ease;
+    /* backwards (not both): after the entry the hover lift still works */
+    animation: listCardIn 450ms ease-out backwards;
+    animation-delay: calc(var(--i, 0) * 45ms);
+}
+
+.movieTvListCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(41, 175, 248, 0.22);
 }
 
 .movieTvListCardTop {
-    border-radius: 20px;
-    width: 100%;
-    height: 380px;
+    position: relative;
+    display: block;
+    overflow: hidden;
 }
-
 
 .amovieTvListCardPoster {
-    border-radius: 20px;
+    display: block;
     width: 100%;
-    height: 380px;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    transition: transform 400ms ease;
 }
 
-
-.movieTvListCardName {
-    color: white;
+.movieTvListCard:hover .amovieTvListCardPoster {
+    transform: scale(1.06);
 }
 
-.movieTvListCardRating {
+/* year badge on the poster */
+.movieTvListCardYear {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
     color: white;
-    font-size: 20px;
-    font-weight: bold;
+    background-color: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(6px);
+    border-radius: 999px;
 }
 
 .movieTvListCardCardBottom {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex: 1;
     gap: 10px;
+    padding: 14px 14px 16px;
+    text-align: center;
 }
 
 .movieTvListCardName {
-    font-size: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.3;
+    color: #1f2937;
 }
 
-.movieTvListCardRating {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+/* rating chip like on the details page */
+.movieTvListCardRating .Rating {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1f2937;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    backdrop-filter: none;
 }
 
+.movieTvListCardRating .ratingCircle {
+    padding: 5px 9px;
+    font-size: 12px;
+}
 
+.movieTvListCardRating .ratingCircle:not(.rating-yellow) {
+    color: white;
+}
+
+/* buttons pushed to the bottom, full width */
 .movieTvListCardBtns {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
+    width: 100%;
+    margin-top: auto;
 }
 
+.movieTvListCardBtns .button {
+    width: 100%;
+    font-size: 14px;
+}
+
+.movieTvListMessage {
+    padding: 24px;
+    color: #64748b;
+    text-align: center;
+}
+
+/* loading skeleton */
+.movieTvListCard.skeleton {
+    gap: 10px;
+    padding-bottom: 16px;
+}
+
+.movieTvListCard.skeleton:hover {
+    transform: none;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+
+.movieTvListSkeletonPoster,
+.movieTvListSkeletonLine {
+    background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%);
+    background-size: 200% 100%;
+    animation: listSkeletonShine 1.2s linear infinite;
+}
+
+.movieTvListSkeletonPoster {
+    aspect-ratio: 2 / 3;
+}
+
+.movieTvListSkeletonLine {
+    height: 14px;
+    margin: 0 16px;
+    border-radius: 7px;
+}
+
+.movieTvListSkeletonLine.short {
+    width: 50%;
+    margin: 0 auto;
+}
+
+@keyframes listCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes listSkeletonShine {
+    from { background-position: 200% 0; }
+    to { background-position: -200% 0; }
+}
 
 /* movie lsit content */
 
 
+/* phones: one card per row, not too wide */
+@media only screen and (max-width: 520px) {
+.movieTvList {
+    padding: 8px 16px 40px;
+}
 
-@media only screen and (max-width: 1024px) {
 .movieTvListContent {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center;
-    gap: 10px;
+    grid-template-columns: minmax(0, 320px);
+    justify-content: center;
+    gap: 20px;
 }
 }
 
-
-@media only screen and (max-width: 768px) {
-.movieTvListContent {
-display: grid;
-grid-template-columns: 1fr 1fr ;
-justify-items: center;
-gap: 10px;
-}
-}
-
-
-@media only screen and (max-width: 425px) {
-.movieTvListContent {
-display: grid;
-grid-template-columns: 1fr ;
-justify-items: center;
-gap: 10px;
-}
-
-.categoryTitle {
-display: flex;
-flex-direction: column;
-padding: 0;
-justify-items: center;
-gap: 20px;
-} 
+@media (prefers-reduced-motion: reduce) {
+    .movieTvListCard,
+    .movieTvListSkeletonPoster,
+    .movieTvListSkeletonLine {
+        animation: none;
+    }
 }

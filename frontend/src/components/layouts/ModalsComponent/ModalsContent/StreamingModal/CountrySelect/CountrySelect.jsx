@@ -101,7 +101,7 @@ const CountrySelect = ({ value, options, onChange, getName }) => {
                 }}>
                 <Flag code={value} />
                 <span className="countrySelectName">{getName(value)}</span>
-                <svg className={`countrySelectChevron ${isOpen ? "open" : ""}`} width="16" height="16" viewBox="0 0 24 24"
+                <svg className={`countrySelectChevron ${isOpen ? "rotated" : ""}`} width="16" height="16" viewBox="0 0 24 24"
                     fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="m6 9 6 6 6-6" />
                 </svg>
