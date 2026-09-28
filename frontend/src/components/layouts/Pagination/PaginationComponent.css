@@ -1,16 +1,29 @@
-/* pagination */
+/* pagination (MUI) - rounded buttons in the app colors */
 
 .pagination {
     display: flex;
     justify-content: center;
-    gap: 5px;
-    padding: 20px;
+    padding: 8px 0 4px;
 }
 
-.pagination button {
-    font-size: 30px;
-    padding: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    border: none;
+.pagination .MuiPaginationItem-root {
+    min-width: 38px;
+    height: 38px;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #475569;
+    border-radius: 999px;
+    transition: background-color 200ms ease, color 200ms ease;
+}
+
+.pagination .MuiPaginationItem-root:hover {
+    color: #0b84c6;
+    background-color: #e0f2fe;
+}
+
+.pagination .MuiPaginationItem-root.Mui-selected {
+    color: white;
+    background: linear-gradient(120deg, #29aff8 0%, #1ed5a9 100%);
+    box-shadow: 0 4px 12px rgba(41, 175, 248, 0.35);
 }

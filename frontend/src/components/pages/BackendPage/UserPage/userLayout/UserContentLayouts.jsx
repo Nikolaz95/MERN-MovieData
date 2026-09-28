@@ -8,44 +8,16 @@ export const device = {
   laptop: `(max-width: 1024px)`,
 };
 
-const UserPrivatListSection = styled.section`
-  padding: 10px;
-  border: 1px solid black;
-  height: 100%;
-
-  @media ${device.mobile} {
-    padding: 0px;
-    grid-template-columns: 1fr;
-  }
-`;
-
+// fluid grid of cards (watch list, favorit list, ratings, actors)
 const UserPrivattListConteiner = styled.main`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  justify-items: center;
-  gap: 20px;
-
-  @media ${device.laptop} {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  @media ${device.tablet} {
-    grid-template-columns: 1fr 1fr;
-  }
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 22px;
 
   @media ${device.mobile} {
-    padding: 0px;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
   }
-`;
-
-
-const UserPrivatListCard = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-width: 200px;
-border: 1px solid black;
 `;
 
 
@@ -54,11 +26,9 @@ import "./UserContentLayouts.css"
 
 const UserContentLayouts = ({ children }) => {
   return (
-    <UserPrivatListSection>
-      <UserPrivattListConteiner>
-        {children}
-      </UserPrivattListConteiner>
-    </UserPrivatListSection>
+    <UserPrivattListConteiner>
+      {children}
+    </UserPrivattListConteiner>
   )
 }
 

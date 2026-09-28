@@ -1,151 +1,333 @@
-
-
-.dashBoardSideBarSection {
+/* dashboard sidebar - white, sticky under the header */
+.dashSidebar {
+    position: sticky;
+    top: var(--headerHeight);
+    z-index: 20;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 300px;
-    gap: 30px;
-    border-radius: 0 16px 16px 0;
-    border: 1px solid black;
-    transition: width 0.3s ease; 
+    flex-shrink: 0;
+    gap: 18px;
+    width: 264px;
+    height: calc(100vh - var(--headerHeight));
+    padding: 20px 14px 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: white;
+    border-right: 1px solid #e2e8f0;
+    box-shadow: 4px 0 20px rgba(15, 23, 42, 0.04);
+    scrollbar-width: thin;
+    transition: width 300ms ease, padding 300ms ease;
 }
 
-
-/* Closed sidebar */
-.closed {
-    width: 100px; /* Narrow width when closed */
-}
-
-/* Open sidebar */
-.open {
-    width: 150px; /* Expanded width when open */
-}
-
-.sideNavBarTop {
+/* ---------- user card ---------- */
+.dashSidebarProfile {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
+    gap: 12px;
+    padding: 12px;
+    background: linear-gradient(120deg, #e0f2fe 0%, #ecfdf5 100%);
+    border-radius: 16px;
+    animation: dashSideIn 400ms ease-out both;
 }
 
-.sideNavMainContent {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.dashSidebarAvatar {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border: 2px solid white;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(41, 175, 248, 0.3);
 }
 
-  
-.sideNavLink {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 0 10px;
-    gap: 10px;
-    border: 1px solid black;
-}
-
-
-
-.sideNavLinklogOut {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    /* border: 1px solid black; */
-}
-
-
-.dashBoardDropdownSideBar.open {
+.dashSidebarProfileText {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 10px ;
+    gap: 4px;
+    min-width: 0;
+}
+
+.dashSidebarName {
+    max-width: 100%;
+    overflow: hidden;
+    font-size: 15px;
+    font-weight: 800;
+    color: #1f2937;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.dashRoleBadge {
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #0b84c6;
+    background-color: white;
+    border-radius: 999px;
+}
+
+.dashRoleBadge.admin {
+    color: white;
+    background: linear-gradient(120deg, #29aff8 0%, #1ed5a9 100%);
+}
+
+/* ---------- links ---------- */
+.dashSidebarNav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dashNavGroup {
+    animation: dashSideIn 400ms ease-out both;
+}
+
+.dashNavGroup:nth-child(1) { animation-delay: 60ms; }
+.dashNavGroup:nth-child(2) { animation-delay: 120ms; }
+.dashNavGroup:nth-child(3) { animation-delay: 180ms; }
+
+.dashNavGroupTitle {
+    margin: 0 0 6px 12px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #94a3b8;
+    white-space: nowrap;
+}
+
+.dashNavList {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
     list-style: none;
-    gap: 10px;
 }
 
-.dashBoardDropdownSideBar.closed ul li a {
+.dashNavLink {
+    position: relative;
     display: flex;
-    flex-direction: column;
-}
-
-/* .dashBoardDropdownSideBar.open ul li a {
-    justify-content: flex-start;
-} */
-
-.dashBoardDropdownSideBar.open ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
+    gap: 12px;
     width: 100%;
-    gap: 20px;
+    height: 42px;
+    padding: 0 12px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    text-decoration: none;
+    white-space: nowrap;
+    background: none;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 200ms ease, color 200ms ease, padding-left 200ms ease;
 }
 
-.dashBoardDropdownSideBar.open li a{
+.dashNavLink:hover {
+    padding-left: 16px;
+    color: #0b84c6;
+    background-color: #f0f9ff;
+}
+
+/* current page */
+.dashNavLink.active {
+    font-weight: 800;
+    color: #0b84c6;
+    background-color: #e0f2fe;
+}
+
+.dashNavLink.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    bottom: 9px;
+    width: 4px;
+    border-radius: 0 4px 4px 0;
+    background: linear-gradient(180deg, #29aff8 0%, #1ed5a9 100%);
+}
+
+.dashNavIcon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border-radius: 6px;
+    transition: transform 200ms ease;
+}
+
+.dashNavLink:hover .dashNavIcon {
+    transform: scale(1.12);
+}
+
+.dashNavText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: opacity 200ms ease;
+}
+
+/* ---------- footer: logout + collapse ---------- */
+.dashSidebarFooter {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.dashLogout {
+    flex: 1;
+    color: #e11d48;
+}
+
+.dashLogout:hover {
+    color: #be123c;
+    background-color: #fff1f2;
+}
+
+.dashCollapseBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    color: #64748b;
+    background-color: #f1f5f9;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 200ms ease, color 200ms ease, transform 300ms ease;
+}
+
+.dashCollapseBtn:hover {
+    color: #0b84c6;
+    background-color: #e0f2fe;
+}
+
+/* ---------- collapsed (desktop): icons only ---------- */
+.dashSidebar.collapsed {
+    width: 76px;
+    padding: 20px 10px 16px;
+}
+
+.dashSidebar.collapsed .dashSidebarProfile {
+    justify-content: center;
+    padding: 8px 0;
+    background: none;
+}
+
+.dashSidebar.collapsed .dashSidebarAvatar {
+    width: 44px;
+    height: 44px;
+}
+
+.dashSidebar.collapsed .dashSidebarProfileText,
+.dashSidebar.collapsed .dashNavText {
+    display: none;
+}
+
+.dashSidebar.collapsed .dashNavGroupTitle {
+    height: 1px;
+    margin: 0 8px 8px;
+    overflow: hidden;
+    color: transparent;
+    background-color: #e2e8f0;
+}
+
+.dashSidebar.collapsed .dashNavLink {
+    justify-content: center;
+    padding: 0;
+}
+
+.dashSidebar.collapsed .dashSidebarFooter {
+    flex-direction: column;
+}
+
+.dashSidebar.collapsed .dashCollapseBtn {
+    transform: rotate(180deg);
+}
+
+@keyframes dashSideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 
-  /* media query */
-
-/* phones: slim sidebar that floats over the content when opened */
-@media screen and (max-width: 600px) {
-    .dashBoardSideBarSection {
-        position: absolute;
-        top: 0;
+/* ---------- phones / tablets: drawer from the left ---------- */
+@media screen and (max-width: 768px) {
+    .dashSidebar,
+    .dashSidebar.collapsed {
+        position: fixed;
+        top: var(--headerHeight);
         left: 0;
         bottom: 0;
-        z-index: 20;
+        z-index: 95;
+        width: min(280px, 85vw);
         height: auto;
-        gap: 15px;
-        background-color: white;
-        overflow-y: auto;
-        scrollbar-width: none;
+        padding: 20px 14px 16px;
+        box-shadow: 10px 0 30px rgba(15, 23, 42, 0.18);
+        /* scrolling inside the drawer stops at its end, it doesn't move the page */
+        overscroll-behavior: contain;
+        transform: translateX(-105%);
+        visibility: hidden;
+        transition: transform 350ms cubic-bezier(0.2, 0.8, 0.2, 1), visibility 350ms;
     }
 
-    .dashBoardSideBarSection.closed {
-        width: 64px;
+    .dashSidebar.mobileOpen {
+        transform: translateX(0);
+        visibility: visible;
     }
 
-    .dashBoardSideBarSection.open {
-        width: 200px;
-        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.25);
+    /* the drawer always shows the full menu */
+    .dashSidebar.collapsed .dashSidebarProfile {
+        justify-content: flex-start;
+        padding: 12px;
+        background: linear-gradient(120deg, #e0f2fe 0%, #ecfdf5 100%);
     }
 
-    .dashBoardSideBarSection .sideNavBarTop {
-        padding: 10px 4px;
-        gap: 10px;
-        font-size: 12px;
-        text-align: center;
-        overflow-wrap: anywhere;
+    .dashSidebar.collapsed .dashSidebarProfileText,
+    .dashSidebar.collapsed .dashNavText {
+        display: flex;
     }
 
-    .dashBoardSideBarSection .userProfileImgDashBoard {
-        width: 40px;
-        height: 40px;
+    .dashSidebar.collapsed .dashNavGroupTitle {
+        height: auto;
+        margin: 0 0 6px 12px;
+        color: #94a3b8;
+        background: none;
     }
 
-    .dashBoardSideBarSection .sideNavLink {
-        padding: 4px;
+    .dashSidebar.collapsed .dashNavLink {
+        justify-content: flex-start;
+        padding: 0 12px;
+    }
+
+    .dashSidebar.collapsed .dashSidebarFooter {
+        flex-direction: row;
+    }
+
+    .dashCollapseBtn {
+        display: none;
     }
 }
 
-@media screen and (min-width: 320px ) {
-    .dashBoardDropdownSideBar ul {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0px;
-        list-style: none;
-        gap: 10px;
+@media (prefers-reduced-motion: reduce) {
+    .dashSidebar,
+    .dashSidebarProfile,
+    .dashNavGroup {
+        animation: none;
+        transition: none;
     }
 }

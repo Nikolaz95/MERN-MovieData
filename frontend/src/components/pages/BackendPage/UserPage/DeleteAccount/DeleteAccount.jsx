@@ -1,7 +1,5 @@
 import React from 'react'
 import DashBoardLayout from '../../AdminPage/Layouts/DashBoardLayout/DashBoardLayout'
-import UsersLayouts from '../userLayout/UsersLayouts'
-import Button from '../../../../layouts/Buttons/Button'
 import titleName from '../../../../hooks/useTitle';
 
 //import css
@@ -10,55 +8,53 @@ import "./DeleteAccount.css"
 
 //import img
 import avatarDefault from "../../../../../assets/pictures/avatar-profile.jpg"
-import DeleteBtn from "../../../../../assets/icons/icon-delete-account.png"
-import Image from '../../../../layouts/ImagesContent/Image'
 import { useModal } from '../../../../context/ModalContext/ModalContext'
+import { PageHeader, Card, DangerButton } from '../userLayout/DashboardUI';
 
-//import css
-import "./DeleteAccount.css"
 import { useSelector } from 'react-redux'
+
+// what the backend deletes (authControllers.js -> deleteOwnAccount)
+const DELETED_ITEMS = ["Your profile (name, email, password)", "Your profile picture", "You are logged out right away"];
 
 const DeleteAccount = () => {
     titleName(`Delete Account`);
     const { user } = useSelector((state) => state.auth);
-    console.log(user);
 
     const { openDeleteOwnAccountModal } = useModal();
 
     return (
         <DashBoardLayout>
-            <h1>Delete Account</h1>
-            <UsersLayouts>
-                <h1>Delete Account</h1>
-                <section className='deleteAccountContent'>
-                    <div className="deleteAccountContainer">
-                        <div className="deleteAccountTop">
-                            <Image variant='profile' src={
-                                user?.avatar ? user?.avatar?.url : avatarDefault
-                            }
-                                alt="" title="Your Profil picture"
-                                className='deleteAccountImg' />
-                        </div>
-                        <div className="deleteAccountBottom">
-                            <div className="deleteAccountName">
-                                <h1>Full Name:</h1>
-                                <p>{user.name}</p>
-                            </div>
-                            <div className="deleteAccountEmail">
-                                <h1>Email:</h1>
-                                <p>{user.email}</p>
-                            </div>
-                            <div className="deleteAccountBtnDelete">
-                                <Button onClick={openDeleteOwnAccountModal}
-                                    variant="deleteAccount" icon={DeleteBtn}
-                                    title="Delete Account">
-                                    <p>Delete Account</p>
-                                </Button>
-                            </div>
-                        </div>
+            <PageHeader title="Delete Account" subtitle="Permanently remove your account" />
+
+            <Card className="deleteAccountCard">
+                <div className="deleteAccountUser">
+                    <img src={user?.avatar?.url || avatarDefault} alt="" className='deleteAccountImg' />
+                    <div>
+                        <p className="deleteAccountName">{user?.name}</p>
+                        <p className="deleteAccountEmail">{user?.email}</p>
                     </div>
-                </section>
-            </UsersLayouts>
+                </div>
+
+                <div className="deleteAccountWarning">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01" />
+                    </svg>
+                    <div>
+                        <p className="deleteAccountWarningTitle">This action cannot be undone</p>
+                        <p>Deleting your account:</p>
+                        <ul className="deleteAccountList">
+                            {DELETED_ITEMS.map((item) => <li key={item}>{item}</li>)}
+                        </ul>
+                    </div>
+                </div>
+
+                <DangerButton type="button" onClick={openDeleteOwnAccountModal}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M3 6h18M8 6V4h8v2m3 0-1 14H6L5 6" />
+                    </svg>
+                    Delete my account
+                </DangerButton>
+            </Card>
         </DashBoardLayout>
     )
 }

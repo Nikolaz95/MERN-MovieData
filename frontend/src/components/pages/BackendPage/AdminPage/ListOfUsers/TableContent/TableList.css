@@ -1,52 +1,226 @@
 
+/* users table - white card, no black borders (all rules scoped to .userTable) */
 
-
-
-
-table {
-    width: 100%;
-    border: 1px solid black;
-    border-collapse: collapse;
+.tableSection {
+    overflow-x: auto; /* safety net on narrow tablets */
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+    animation: tableFadeUp 450ms ease-out 120ms both;
 }
 
+.userTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    color: #1f2937;
+}
 
-th, td {
-    text-align: center;
-    border: 1px solid black;
-    padding: 10px;
+.userTable th,
+.userTable td {
+    padding: 14px 18px;
+    text-align: left;
+    vertical-align: middle;
+    border: none;
+}
+
+.userTable thead th {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #64748b;
+    white-space: nowrap;
+    background-color: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.userTable tbody tr {
+    border-bottom: 1px solid #f1f5f9;
+    transition: background-color 150ms ease;
+    animation: tableRowIn 350ms ease-out backwards;
+    animation-delay: calc(var(--i, 0) * 40ms + 150ms);
+}
+
+.userTable tbody tr:last-child {
+    border-bottom: none;
+}
+
+.userTable tbody tr:hover {
+    background-color: #f0f9ff;
+}
+
+/* ---------- cells ---------- */
+.userCell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.userCellAvatar {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border: 2px solid #e0f2fe;
+    border-radius: 50%;
+}
+
+.userCellText {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.userCellName {
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.userCellEmail {
+    font-size: 13px;
+    color: #64748b;
+    overflow-wrap: anywhere;
+}
+
+.userIdChip {
+    padding: 4px 8px;
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 12px;
+    color: #475569;
+    background-color: #f1f5f9;
+    border-radius: 6px;
+    cursor: help;
+}
+
+.userRoleBadge {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: #0b84c6;
+    background-color: #e0f2fe;
+    border-radius: 999px;
+}
+
+.userRoleBadge.admin {
+    color: white;
+    background: linear-gradient(120deg, #29aff8 0%, #1ed5a9 100%);
+}
+
+.userTable .colActions {
+    text-align: right;
 }
 
 /* btn user list */
-
-
 .btn-userListContent {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    border: none;
-    gap: 10px;
+    justify-content: flex-end;
+    gap: 8px;
 }
-
 
 .btn-userList {
     display: flex;
-    flex-direction: row;
-    background-color: transparent;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
     border: none;
-    gap: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 200ms ease, color 200ms ease, transform 200ms ease;
 }
 
-.btnIcon-userList {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
+.btn-userList.edit {
+    color: #0b84c6;
+    background-color: #e0f2fe;
+}
+
+.btn-userList.edit:hover {
+    color: white;
+    background-color: #29aff8;
+    transform: translateY(-2px);
+}
+
+.btn-userList.delete {
+    color: #e11d48;
+    background-color: #fff1f2;
+}
+
+.btn-userList.delete:hover {
+    color: white;
+    background-color: #e11d48;
+    transform: translateY(-2px);
+}
+
+/* loading / empty rows */
+.userRowSkeleton td span {
+    display: block;
+    height: 42px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%);
+    background-size: 200% 100%;
+    animation: tableSkeletonShine 1.2s linear infinite;
+}
+
+.userRowEmpty td {
+    padding: 40px 18px;
+    font-size: 15px;
+    color: #64748b;
+    text-align: center;
+}
+
+@keyframes tableFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes tableRowIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes tableSkeletonShine {
+    from { background-position: 200% 0; }
+    to { background-position: -200% 0; }
+}
+
+
+/* tablets: hide the ID column, a bit tighter */
+@media only screen and (max-width: 1024px) {
+    .userTable .colId {
+        display: none;
+    }
+
+    .userTable th,
+    .userTable td {
+        padding: 12px 14px;
+    }
 }
 
 
 /* phones: every row becomes a card, the column name comes from data-label */
 @media only screen and (max-width: 600px) {
-    .userTable {
-        border: none;
+    .tableSection {
+        overflow: visible;
+        background: none;
+        box-shadow: none;
     }
 
     .userTable thead {
@@ -61,11 +235,17 @@ th, td {
         width: 100%;
     }
 
-    .userTable tr {
+    .userTable tbody tr {
         margin-bottom: 12px;
-        padding: 6px 12px;
-        border: 1px solid black;
-        border-radius: 12px;
+        padding: 6px 16px;
+        background-color: white;
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.07);
+    }
+
+    .userTable tbody tr:hover {
+        background-color: white;
     }
 
     .userTable td {
@@ -73,25 +253,55 @@ th, td {
         justify-content: space-between;
         align-items: center;
         gap: 10px;
-        padding: 6px 0;
-        border: none;
+        padding: 10px 0;
         text-align: right;
         overflow-wrap: anywhere;
     }
 
     .userTable td:not(:last-child) {
-        border-bottom: 1px solid #e0e0e0;
+        border-bottom: 1px solid #f1f5f9;
     }
 
     .userTable td::before {
         content: attr(data-label);
         flex-shrink: 0;
-        font-weight: bold;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        color: #94a3b8;
         text-align: left;
     }
 
-    .userTable .btn-userListContent {
-        justify-content: flex-end;
+    /* the user cell is the card header: no label, full width */
+    .userTable td[data-label="User"] {
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .userTable td[data-label="User"]::before {
+        display: none;
+    }
+
+    .userTable .colId {
+        display: flex;
+    }
+
+    .userTable .userRowEmpty td,
+    .userTable .userRowSkeleton td {
+        display: block;
+    }
+
+    .userTable .userRowEmpty td::before,
+    .userTable .userRowSkeleton td::before {
+        display: none;
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .tableSection,
+    .userTable tbody tr,
+    .userRowSkeleton td span {
+        animation: none;
+    }
+}

@@ -3,7 +3,109 @@
 .listOfUsersSection {
     display: flex;
     flex-direction: column;
+    gap: 18px;
+    max-width: 1200px;
+}
+
+/* ---------- search + role filter ---------- */
+.usersToolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
-    gap: 20px;
-    height: 100%;
+    gap: 12px;
+    animation: usersFadeUp 400ms ease-out 60ms both;
+}
+
+.usersSearch {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1 1 280px;
+    max-width: 420px;
+}
+
+.usersSearch svg {
+    position: absolute;
+    left: 16px;
+    color: #29aff8;
+    pointer-events: none;
+}
+
+.usersSearch input {
+    width: 100%;
+    height: 46px;
+    padding: 0 16px 0 44px;
+    font-family: inherit;
+    font-size: 15px;
+    color: #1f2937;
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+    outline: none;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.usersSearch input:focus {
+    border-color: #29aff8;
+    box-shadow: 0 0 0 4px rgba(41, 175, 248, 0.15);
+}
+
+.usersRoleFilter {
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+}
+
+.usersRoleFilterBtn {
+    height: 36px;
+    padding: 0 16px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    color: #64748b;
+    background: none;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 200ms ease, color 200ms ease;
+}
+
+.usersRoleFilterBtn:hover {
+    color: #0b84c6;
+}
+
+.usersRoleFilterBtn.active {
+    color: white;
+    background: linear-gradient(120deg, #29aff8 0%, #1ed5a9 100%);
+    box-shadow: 0 4px 12px rgba(41, 175, 248, 0.3);
+}
+
+@keyframes usersFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .usersSearch {
+        max-width: none;
+    }
+
+    .usersRoleFilter {
+        width: 100%;
+    }
+
+    .usersRoleFilterBtn {
+        flex: 1;
+    }
 }

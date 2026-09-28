@@ -1,49 +1,121 @@
 
 
-
-.userUpload-content {
-    display: flex;
-    justify-content: center;
-}
-
 .userUpload-info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid black;
+    gap: 18px;
 }
 
-
+/* big round picture (also the drop zone) */
 .userUpload-top {
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    padding: 8px;
+    border: 3px dashed transparent;
+    border-radius: 50%;
+    transition: border-color 200ms ease, background-color 200ms ease;
+}
+
+.userUpload-top.dragging {
+    background-color: #f0f9ff;
+    border-color: #29aff8;
+}
+
+.userUpload-pickBtn {
+    position: relative;
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .userUpload-Profileimg {
-    width: 250px;
-    height: 250px;
-    border: 1px solid black;
+    display: block;
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border: 5px solid white;
     border-radius: 50%;
+    box-shadow: 0 14px 34px rgba(41, 175, 248, 0.3);
+    animation: uploadPop 450ms cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+
+/* "Change" layer on hover */
+.userUpload-overlay {
+    position: absolute;
+    inset: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    background-color: rgba(15, 23, 42, 0.45);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 200ms ease;
+}
+
+.userUpload-pickBtn:hover .userUpload-overlay,
+.userUpload-pickBtn:focus-visible .userUpload-overlay {
+    opacity: 1;
+}
+
+.userUpload-camera {
+    position: absolute;
+    right: 22px;
+    bottom: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    color: white;
+    background: linear-gradient(120deg, #29aff8 0%, #1ed5a9 100%);
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 6px 14px rgba(41, 175, 248, 0.4);
+    pointer-events: none;
 }
 
 input[type="file"] {
     display: none;
 }
 
-.userUpload-BtnUplFile {
-    position: relative;
-    bottom: 55px;
-    left: 160px;
-}
-
-.userUpload-camera {
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
+.userUpload-newHint {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0b84c6;
 }
 
 .userUpload-Btns {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
+    justify-content: center;
+}
+
+@keyframes uploadPop {
+    from {
+        opacity: 0.4;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .userUpload-Profileimg {
+        width: 180px;
+        height: 180px;
+    }
+
+    .userUpload-camera {
+        right: 16px;
+        bottom: 16px;
+    }
 }
