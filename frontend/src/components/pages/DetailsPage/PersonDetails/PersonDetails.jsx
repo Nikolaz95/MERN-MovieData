@@ -5,6 +5,9 @@ import { useMoveBack } from '../../../hooks/useMoveBack';
 
 //import css
 import "./PersonDetails.css";
+
+//import images
+import ActorIcon from "../../../../assets/icons/icons-actor.png"
 //import components
 import TitleName from '../../../hooks/TitleName/TitleName'
 import getApiUrl from '../../../hooks/getApiUrl';
@@ -23,7 +26,7 @@ const PersonDetails = () => {
     console.log(data.name);
     return (
         <>
-            <TitleName title={data?.name} />
+            <TitleName title={data?.name || "Actor"} icon={ActorIcon} />
             <section className="actorDetailsContent">
                 <div className="goBackBtn">
                     <Button onClick={goBack}

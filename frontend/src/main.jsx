@@ -15,6 +15,8 @@ import SingInPage from './components/pages/SignInRegisterPage/SingInPage/SingInP
 import RegisterPage from './components/pages/SignInRegisterPage/RegisterPage/RegisterPage.jsx';
 import MovieDetails from './components/pages/DetailsPage/MovieDetails/MovieDetails.jsx';
 import TvShowDetails from './components/pages/DetailsPage/TvShowDetails/TvShowDetails.jsx';
+import SeasonDetails from './components/pages/DetailsPage/SeasonDetails/SeasonDetails.jsx';
+import EpisodeDetails from './components/pages/DetailsPage/EpisodeDetails/EpisodeDetails.jsx';
 import PersonDetails from './components/pages/DetailsPage/PersonDetails/PersonDetails.jsx';
 import { AdminRoutes } from './components/routes/AdminRoutes.jsx';
 import { UserRoutes } from './components/routes/UserRoutes.jsx';
@@ -51,6 +53,14 @@ const router = createBrowserRouter([
       {
         path: "/tvShow/:id",
         element: <TvShowDetails />
+      },
+      {
+        path: "/tvShow/:id/season/:seasonNumber",
+        element: <SeasonDetails />
+      },
+      {
+        path: "/tvShow/:id/season/:seasonNumber/episode/:episodeNumber",
+        element: <EpisodeDetails />
       },
       {
         path: "/person/:id",

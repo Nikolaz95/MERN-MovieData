@@ -1,0 +1,58 @@
+
+/* hero + info card styles come from the tv show page (MovieTvShowTopDetailsLayout.css, PosterRightSection.css) */
+
+.seasonBackLink {
+    align-self: flex-start;
+    padding: 6px 14px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0b84c6;
+    text-decoration: none;
+    background-color: #e0f2fe;
+    border: 1px solid #bae6fd;
+    border-radius: 999px;
+    transition: transform 200ms ease;
+}
+
+.seasonBackLink:hover {
+    transform: translateX(-3px);
+}
+
+.seasonYear {
+    font-weight: 400;
+    color: #64748b;
+}
+
+
+/* episodes list */
+.seasonEpisodesList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.seasonEpisodesEmpty {
+    padding: 0 20px;
+    font-size: 16px;
+    color: #64748b;
+}
+
+
+/* wrong season number in the url */
+.seasonDetailsNotFound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 80px 20px;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    color: #1f2937;
+}
+
+.seasonDetailsNotFound .seasonBackLink {
+    align-self: center;
+}

@@ -4,6 +4,9 @@ import { useParams } from 'react-router-dom';
 //import css
 import "./MovieDetails.css";
 
+//import images
+import MoviesIcon from "../../../../assets/icons/icon-movies.png"
+
 //import components
 import useFetch from '../../../hooks/useFetch';
 import getApiUrl from '../../../hooks/getApiUrl';
@@ -34,7 +37,7 @@ const MovieDetails = () => {
     console.log(data);
     return (
         <>
-            <TitleName title={data?.original_title} />
+            <TitleName title={data?.title ? `${data.title}${data.release_date ? ` (${data.release_date.slice(0, 4)})` : ""}` : "Movie"} icon={MoviesIcon} />
             <section className="movieTvDetailsPageContent">
                 {isVisible && <ScrollToTop />}
                 {/* hero: background picture + poster + info */}

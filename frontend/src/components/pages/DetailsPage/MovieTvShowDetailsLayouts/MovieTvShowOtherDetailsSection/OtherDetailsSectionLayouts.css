@@ -15,7 +15,8 @@
 .movieTvActorsTitle,
 .movieTvPicturesTitle,
 .movieTvRecommendationsTitle,
-.actorMoviesTitle {
+.actorMoviesTitle,
+.seasonEpisodesTitle {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -29,7 +30,8 @@
 .movieTvActorsTitle::before,
 .movieTvPicturesTitle::before,
 .movieTvRecommendationsTitle::before,
-.actorMoviesTitle::before {
+.actorMoviesTitle::before,
+.seasonEpisodesTitle::before {
     content: "";
     width: 6px;
     height: 1.1em;

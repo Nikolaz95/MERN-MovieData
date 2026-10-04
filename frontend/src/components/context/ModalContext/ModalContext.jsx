@@ -35,6 +35,10 @@ export const ModalProvider = ({ children }) => {
         openModal("streamingModal", { movieInfo, type });
     };
 
+    const openTrailerModal = (trailer, title) => {
+        openModal("trailerModal", { trailer, title });
+    };
+
 
     // useCallback so Modal's useEffect doesn't re-run on every render
     const closeModal = useCallback(() => {
@@ -46,7 +50,7 @@ export const ModalProvider = ({ children }) => {
         <ModalContext.Provider value={{
             activeModal, modalData, closeModal,
             openDeleteOwnAccountModal, openUpdateUserModal, openDeleteUserModal,
-            openPictureModal, openStreamingModal
+            openPictureModal, openStreamingModal, openTrailerModal
         }}>
             {children}
         </ModalContext.Provider>

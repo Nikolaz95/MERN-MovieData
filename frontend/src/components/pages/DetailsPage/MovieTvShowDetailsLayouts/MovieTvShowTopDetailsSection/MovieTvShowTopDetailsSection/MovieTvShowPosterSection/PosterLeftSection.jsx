@@ -9,6 +9,7 @@ import StreamingImg from "../../../../../../../assets/icons/icon-streaming.png"
 
 //import component
 import Button from '../../../../../../layouts/Buttons/Button';
+import TrailerBtn from '../../../../../../layouts/Buttons/TrailerBtn/TrailerBtn';
 import { useModal } from '../../../../../../context/ModalContext/ModalContext';
 
 const PosterLeftSection = ({ data, type }) => {
@@ -23,6 +24,12 @@ const PosterLeftSection = ({ data, type }) => {
                     <img src={StreamingImg} alt="Streaming Icon" className="iconBtns" />
                 </Button>
             </div>
+            {/* data.id is missing until the details are fetched */}
+            {data?.id && (
+                <div className="streamingContent">
+                    <TrailerBtn id={data.id} type={type} title={data.title || data.name} />
+                </div>
+            )}
         </main>
     )
 }

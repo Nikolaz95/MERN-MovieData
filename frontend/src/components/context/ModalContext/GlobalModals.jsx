@@ -10,6 +10,7 @@ import DeleteAccountModal from '../../layouts/ModalsComponent/ModalsContent/Dele
 import UpdateProfileModal from '../../layouts/ModalsComponent/ModalsContent/UpdateProfileModal';
 import MovieTvShowPictureModal from '../../layouts/ModalsComponent/ModalsContent/MovieTvShowPictureModal';
 import StreamingModal from '../../layouts/ModalsComponent/ModalsContent/StreamingModal/StreamingModal';
+import TrailerModal from '../../layouts/ModalsComponent/ModalsContent/TrailerModal/TrailerModal';
 
 const GlobalModals = () => {
     const navigate = useNavigate();
@@ -89,6 +90,15 @@ const GlobalModals = () => {
                 <StreamingModal
                     movieInfo={modalData?.movieInfo}
                     type={modalData?.type}
+                    onClose={closeModal}
+                />
+            </Modal>
+
+            {/* movie / tv show trailer */}
+            <Modal isOpen={activeModal === "trailerModal"} onClose={closeModal}>
+                <TrailerModal
+                    trailer={modalData?.trailer}
+                    title={modalData?.title}
                     onClose={closeModal}
                 />
             </Modal>

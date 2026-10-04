@@ -10,7 +10,7 @@ import SwiperSliderCard from '../../../../../layouts/SwiperComponents/SwiperSlid
 import SliderSwiperPicturesContent from './SliderSwiperPicturesContent/SliderSwiperPicturesContent';
 
 
-const PicturesFromMovieSection = ({ id, type }) => {
+const PicturesFromMovieSection = ({ id, type, title = "Pictures from Movies :" }) => {
     /* fetch */
     const apiUrl = getApiUrl(`${type}/${id}/images`);
     const { data, loading, error } = useFetch(apiUrl);
@@ -29,12 +29,12 @@ const PicturesFromMovieSection = ({ id, type }) => {
 
     return (
         <section className='movieTvPicturesSection'>
-            <h1 className='movieTvPicturesTitle'>Pictures from Movies :</h1>
+            <h1 className='movieTvPicturesTitle'>{title}</h1>
             <section className='movieTvPicturesContent'>
                 <main className='movieTvPicturesSlider'>
                     <SwiperSliderCard
                         className="swiperSliderPicturesMovie"
-                        items={data?.backdrops || []}
+                        items={data?.backdrops || data?.stills || []} /* episodes have stills instead of backdrops */
                         sliderSettings={sliderSettings}
                         pagination={false}
                         renderContent={(movie) => <SliderSwiperPicturesContent data={movie} />} />
